@@ -1,11 +1,13 @@
 package derivada;
 
+import java.util.ArrayList;
+import java.util.List;
 import costo.CostoColaboracion;
 import costo.CostoServicio;
 import problema.ProblemaComplejo;
 import problema.ProblemaSimple;
 
-public abstract class Usuario {
+public class Usuario {
 
 	private int id;
 	private String ubicacion;
@@ -14,6 +16,7 @@ public abstract class Usuario {
 	private boolean colaborador;
 	private ProblemaSimple problemaSimple;
 	private ProblemaComplejo problemaComplejo;
+	private String medioDePago;
 
 	public Usuario(int id, Vehiculo idVeiculo, boolean colaborador) {
 		this.id = id;
@@ -24,7 +27,7 @@ public abstract class Usuario {
 
 	public String pedirAyuda(Usuario id, Usuario valoracion) {// hace referencia a casos de mecanica ligera, solamente
 																// solucionable por usuario colaboradores
-		String mensaje = this.ubicacion + this.problemaSimple + this.idVehiculo;
+		String mensaje = this.ubicacion + this.problemaSimple + this.idVehiculo + this.medioDePago;
 
 		return mensaje;
 	}
@@ -43,9 +46,9 @@ public abstract class Usuario {
 		return servicio;
 	}
 
-	public CostoServicio pagarServicio(CostoServicio pagoServicio) {
+	public String pagarServicio(CostoServicio pagoServicio) {
 
-		return pagoServicio;
+		return this.medioDePago + valoracionColaborador(valoracion);
 	}
 
 	public void setValoracion(String valoracion) {
@@ -71,5 +74,13 @@ public abstract class Usuario {
 
 			return mensaje;
 		}
+	}
+	public List baseDeDatos(int id, Usuario usuario) {
+		
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		
+		usuarios.add(id, usuario);
+		
+		return usuarios;
 	}
 }

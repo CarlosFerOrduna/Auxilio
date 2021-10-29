@@ -1,5 +1,8 @@
 package derivada;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import costo.CostoServicio;
 import problema.ProblemaComplejo;
 
@@ -49,6 +52,14 @@ public class Profesional {
 
 	public void setValoracion(String valoracion) {
 		this.valoracion = valoracion;
+	}
+	public List baseDeDatos(int id, Profesional profesional) {
+		
+		List<Profesional> profesionales = new ArrayList<Profesional>();
+		
+		profesionales.add(id, profesional);
+		
+		return profesionales;
 	}
 
 }

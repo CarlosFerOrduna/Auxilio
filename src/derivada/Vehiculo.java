@@ -26,18 +26,21 @@ public class Vehiculo {
 	public double getId() {
 		return this.id;
 	}
+	public List baseDeDatos(int id, Vehiculo vehiculo) {
+		
+		List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
+		
+		vehiculos.add(id, vehiculo);
+		
+		return vehiculos;
+	}
 
-	public ProblemaComplejo historialDeReparaciones(int id, ProblemaComplejo reparacion) {
-
-		ProblemaComplejo historial = null;
+	public List historialDeReparaciones(int id, ProblemaComplejo reparacion) {
 
 		List<ProblemaComplejo> reparaciones = new ArrayList<ProblemaComplejo>();
 
 		reparaciones.add(id, reparacion);
 
-		for (ProblemaComplejo historialFor : reparaciones) {
-			historial = historialFor;
-		}
-		return historial;
+		return reparaciones;
 	}
 }
