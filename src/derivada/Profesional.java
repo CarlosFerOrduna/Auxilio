@@ -1,65 +1,35 @@
 package derivada;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import costo.CostoServicio;
 import problema.ProblemaComplejo;
 
 public class Profesional {
 
-	private int id;
-	private String ubicacion;
+	private String nombre;
 	private String especialidad;
-	private String valoracion;
+	private String ubicacion;
 
-	public Profesional(int id, String ubicacion, String especialidad) {
-		this.id = id;
-		this.ubicacion = ubicacion;
+	public Profesional(String nombre, String especialidad, String ubicacion) {
+		this.nombre = nombre;
 		this.especialidad = especialidad;
+		this.ubicacion = ubicacion;
 	}
 
-	public String getUbicacion() {
-		return this.ubicacion;
-	}
-
-	public int getId() {
-		return this.id;
+	public String getNombre() {
+		return nombre;
 	}
 
 	public String getEspecialidad() {
-		return this.especialidad;
+		return especialidad;
 	}
 
-	public String getValoracion() {
-		return this.valoracion;
+	public String getUbicacion() {
+		return ubicacion;
 	}
 
-	public String detalleServicio(ProblemaComplejo problema) {
-		ProblemaComplejo solucion = null;
-		CostoServicio posibleFactura = null;
+	public double facturar(ProblemaComplejo problemaAFacturar, Usuario vehiculoDelUsuaio) {
 
-		String mensaje = "El costo es " + posibleFactura + "la tarea a realizar es " + solucion;
+//		si el problema es este y tu auto es este te cobro lo siguiente, en base a los que otros cobran.
 
-		return mensaje;
+		return 0;
 	}
-
-	public CostoServicio cobroServicio(Usuario servicio) {
-		CostoServicio factura = null;
-
-		return factura;
-	}
-
-	public void setValoracion(String valoracion) {
-		this.valoracion = valoracion;
-	}
-	public List baseDeDatos(int id, Profesional profesional) {
-		
-		List<Profesional> profesionales = new ArrayList<Profesional>();
-		
-		profesionales.add(id, profesional);
-		
-		return profesionales;
-	}
-
 }

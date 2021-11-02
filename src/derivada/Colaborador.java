@@ -3,18 +3,14 @@ package derivada;
 import problema.ProblemaComplejo;
 import problema.ProblemaSimple;
 
-public class Usuario {
+public class Colaborador {
 
 	private String nombre;
 	private String ubicacion;
-	private Vehiculo vehiculo;
 	private String valoracion;
-
-	public Usuario(String nombre, Vehiculo vehiculo) {
-
+	
+	public Colaborador(String nombre) {
 		this.nombre = nombre;
-		this.vehiculo = vehiculo;
-
 	}
 	public String getNombre() {
 		return nombre;
@@ -22,24 +18,17 @@ public class Usuario {
 	public String getUbicacion() {
 		return ubicacion;
 	}
-	public Vehiculo getVehiculo() {
-		return vehiculo;
-	}
 	public String getValoracion() {
 		return valoracion;
 	}
 	public void setValoracion(String valoracion) {
 		this.valoracion = valoracion;
 	}
-	public String pedirAyuda(Vehiculo vehiculo) {
-		return vehiculo.reportarProblemaSimple() + ubicacion;
+	public String brindarAyuda(ProblemaSimple problema, Usuario nombre, Usuario ubicacion) {
+		
+		return "Estoy yendo" + this.ubicacion;
 	}
 	public ProblemaComplejo pedirSerrvicio(Vehiculo vehiculo) {
 		return vehiculo.reportarProblemaComplejo();
-	}
-	public double pagar() {
-		double formaDePago = 0;
-		
-		return formaDePago;
 	}
 }

@@ -1,46 +1,43 @@
 package derivada;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import problema.ProblemaComplejo;
+import problema.ProblemaSimple;
 
 public class Vehiculo {
 
-	private int id;
 	private String modelo;
 	private String marca;
-	private String version;
-	private int anio;
-	private String tipo;
+	private int version;
+	private String problemaComplejo;
+	private String problemaSimple;
 
-	public Vehiculo(int id, String modelo, String marca, String version, int anio, String tipo) {
-		this.id = id;
+	public Vehiculo(String modelo, String marca, int version) {
 		this.modelo = modelo;
 		this.marca = marca;
 		this.version = version;
-		this.anio = anio;
-		this.tipo = tipo;
 	}
 
-	public double getId() {
-		return this.id;
-	}
-	public List baseDeDatos(int id, Vehiculo vehiculo) {
-		
-		List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
-		
-		vehiculos.add(id, vehiculo);
-		
-		return vehiculos;
+	public String getMoledo() {
+		return modelo;
 	}
 
-	public List historialDeReparaciones(int id, ProblemaComplejo reparacion) {
+	public String getMarca() {
+		return marca;
+	}
 
-		List<ProblemaComplejo> reparaciones = new ArrayList<ProblemaComplejo>();
+	public int getVersion() {
+		return version;
+	}
 
-		reparaciones.add(id, reparacion);
+	public ProblemaSimple reportarProblemaSimple() {
+		ProblemaSimple problema = new ProblemaSimple();
 
-		return reparaciones;
+		return problema;
+	}
+
+	public ProblemaComplejo reportarProblemaComplejo() {
+		ProblemaComplejo problema = new ProblemaComplejo();
+
+		return problema;
 	}
 }
