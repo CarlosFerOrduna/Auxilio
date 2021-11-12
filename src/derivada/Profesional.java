@@ -1,7 +1,5 @@
 package derivada;
 
-import problema.ProblemaComplejo;
-
 public class Profesional {
 
 	private String nombre;
@@ -26,10 +24,29 @@ public class Profesional {
 		return ubicacion;
 	}
 
-	public double facturar(ProblemaComplejo problemaAFacturar, Usuario vehiculoDelUsuaio) {
+	public double presupuestar(Usuario cliente, int indexProblema) {
 
-//		si el problema es este y tu auto es este te cobro lo siguiente, en base a los que otros cobran.
+		if (cliente.enviarProblemaTaller(indexProblema) == cliente.enviarProblemaTaller(0)) {
+			return 2000;
+		} else if (cliente.enviarProblemaTaller(indexProblema) == cliente.enviarProblemaTaller(1)) {
+			return 2800;
+		} else if (cliente.enviarProblemaTaller(indexProblema) == cliente.enviarProblemaTaller(2)) {
+			return 2900;
+		} else if (cliente.enviarProblemaTaller(indexProblema) == cliente.enviarProblemaTaller(3)) {
+			return 3000;
+		} else if (cliente.enviarProblemaTaller(indexProblema) == cliente.enviarProblemaTaller(4)) {
+			return 10000;
+		} else if (cliente.enviarProblemaTaller(indexProblema) == cliente.enviarProblemaTaller(5)) {
+			return 1000;
+		} else {
+			return 0;
+		}
 
-		return 0;
+	}
+
+	public String repararVehiculo(Usuario cliente, int indexProblema) {
+
+		return "Tu vehiculo ya esta listo, " + cliente.enviarProblemaTaller(indexProblema) + ", total a pagar "
+				+ presupuestar(cliente, indexProblema);
 	}
 }

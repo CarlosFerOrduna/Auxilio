@@ -1,20 +1,17 @@
 package derivada;
 
-import problema.ProblemaComplejo;
-import problema.ProblemaSimple;
-
 public class Vehiculo {
 
 	private String modelo;
 	private String marca;
 	private int version;
-	private String problemaComplejo;
-	private String problemaSimple;
+	private String combustible;
 
-	public Vehiculo(String modelo, String marca, int version) {
+	public Vehiculo(String modelo, String marca, int version, String combustible) {
 		this.modelo = modelo;
 		this.marca = marca;
 		this.version = version;
+		this.combustible = combustible;
 	}
 
 	public String getMoledo() {
@@ -29,15 +26,7 @@ public class Vehiculo {
 		return version;
 	}
 
-	public ProblemaSimple reportarProblemaSimple() {
-		ProblemaSimple problema = new ProblemaSimple();
-
-		return problema;
-	}
-
-	public ProblemaComplejo reportarProblemaComplejo() {
-		ProblemaComplejo problema = new ProblemaComplejo();
-
-		return problema;
+	public String getCombustible() {
+		return combustible;
 	}
 }

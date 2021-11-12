@@ -1,12 +1,12 @@
 package derivada;
 
-import problema.ProblemaComplejo;
-import problema.ProblemaSimple;
+import service.ServiceFallasParaColaborador;
+import service.ServiceFallasParaTaller;
 
 public class Usuario {
 
 	private String nombre;
-	private String ubicacion;
+	private String ubicacion = "Estoy aca";
 	private Vehiculo vehiculo;
 	private String valoracion;
 
@@ -16,30 +16,39 @@ public class Usuario {
 		this.vehiculo = vehiculo;
 
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public String getUbicacion() {
 		return ubicacion;
 	}
+
 	public Vehiculo getVehiculo() {
 		return vehiculo;
 	}
+
 	public String getValoracion() {
 		return valoracion;
 	}
+
 	public void setValoracion(String valoracion) {
 		this.valoracion = valoracion;
 	}
-	public String pedirAyuda(Vehiculo vehiculo) {
-		return vehiculo.reportarProblemaSimple() + ubicacion;
+
+	public String pedirAyuda(int index) {
+		return ubicacion + vehiculo + ServiceFallasParaColaborador.elegirProblemaDeLaLista(index);
 	}
-	public ProblemaComplejo pedirSerrvicio(Vehiculo vehiculo) {
-		return vehiculo.reportarProblemaComplejo();
+
+	public String enviarProblemaTaller(int index) {
+		return ServiceFallasParaTaller.elegirProblemaDeLaLista(index) + "" + vehiculo;
 	}
-	public double pagar() {
+
+	public double pagar(Profesional reparaMiVehiculo) {
+
 		double formaDePago = 0;
-		
+
 		return formaDePago;
 	}
 }

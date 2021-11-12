@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d6e8837-e91d-4661-be8d-a1bb2769f163" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Principal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/costo/CostoColaboracion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/costo/CostoServicio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/derivada/Colaborador.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/derivada/Colaborador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/derivada/Profesional.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/derivada/Profesional.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/derivada/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/derivada/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/derivada/Vehiculo.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/derivada/Vehiculo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/problema/ProblemaComplejo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/problema/ProblemaSimple.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/costo/CostoColaboracion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/costo/CostoServicio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/derivada/Colaborador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/derivada/Colaborador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/derivada/Profesional.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/derivada/Profesional.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/derivada/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/derivada/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/derivada/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/derivada/Vehiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problema/ProblemaComplejo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/problema/ProblemaSimple.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="20p1fe6mVSrj0RFr18TNcQsFbgo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d6e8837-e91d-4661-be8d-a1bb2769f163" name="Changes" comment="" />
+      <created>1636726827263</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636726827263</updated>
+    </task>
+    <servers />
+  </component>
+</project>
