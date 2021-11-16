@@ -12,4 +12,7 @@ public class CombustibleRepository {
 	public void agregarCombustible(Combustible nuevoCombustible) {
 		combustibles.add(nuevoCombustible);
 	}
+	public void quitarCombustible(Combustible combustibleQueSeVa) {
+		combustibles.remove(combustibleQueSeVa);
+	}
 }

@@ -12,4 +12,7 @@ public class ModeloRepository {
 	public void agregarModelo(Modelo nuevoModelo) {
 		modelos.add(nuevoModelo);
 	}
+	public void quitarModelo(Modelo modeloQueSeVa) {
+		modelos.remove(modeloQueSeVa);
+	}
 }

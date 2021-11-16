@@ -3,14 +3,18 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import derivadaProblema.ProblemaComplejo;
+import derivadaGeneral.Reparacion;
 
 public class ReparacionRepository {
 
-	List<ProblemaComplejo> historialDeReparaciones = new ArrayList<ProblemaComplejo>();
-	
-	public void agregarReparacion(ProblemaComplejo nuevaReparacion) {
-		historialDeReparaciones.add(nuevaReparacion);
+	List<Reparacion> reparaciones = new ArrayList<Reparacion>();
+
+	public void agregarReparacion(Reparacion nuevaReparacion) {
+		reparaciones.add(nuevaReparacion);
 	}
-	
+
+	public void quitarReparacion(Reparacion reparacionQueSeVa) {
+		reparaciones.remove(reparacionQueSeVa);
+	}
+
 }

@@ -12,5 +12,7 @@ public class MarcaRepository {
 	public void agregarMarca(Marca nuevaMarca) {
 		marcas.add(nuevaMarca);
 	}
-	
+	public void quitarMarca(Marca marcaQueSeVa) {
+		marcas.remove(marcaQueSeVa);
+	}
 }
