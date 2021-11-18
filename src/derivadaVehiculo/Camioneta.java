@@ -1,7 +1,7 @@
 package derivadaVehiculo;
 
+import base.Combustible;
 import base.Vehiculo;
-import derivadaGeneral.Combustible;
 import derivadaGeneral.Marca;
 import derivadaGeneral.Modelo;
 

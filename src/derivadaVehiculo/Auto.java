@@ -1,17 +1,21 @@
 package derivadaVehiculo;
 
+import base.Combustible;
 import base.Vehiculo;
-import derivadaGeneral.Combustible;
+import derivadaGeneral.Gama;
 import derivadaGeneral.Marca;
 import derivadaGeneral.Modelo;
 
 public class Auto extends Vehiculo {
 
-	public Auto(Modelo modelo, Marca marca, int version, Combustible combustible) {
+	private Gama gama;
+	
+	public Auto(Modelo modelo, Marca marca, int version, Combustible combustible, Gama gama) {
 		this.modelo = modelo;
 		this.marca = marca;
 		this.version = version;
 		this.combustible = combustible;
+		this.gama = gama;
 	}
 
 	@Override
@@ -34,4 +38,7 @@ public class Auto extends Vehiculo {
 		return combustible;
 	}
 
+	public Gama getGama() {
+		return gama;
+	}
 }

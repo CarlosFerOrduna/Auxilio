@@ -3,16 +3,16 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import derivadaGeneral.Gamma;
+import derivadaGeneral.Gama;
 
 public class GammaRepository {
 
-	List<Gamma> gammas = new ArrayList<Gamma>();
+	List<Gama> gammas = new ArrayList<Gama>();
 	
-	public void agregarGamma(Gamma nuevaGamma) {
+	public void agregarGamma(Gama nuevaGamma) {
 		gammas.add(nuevaGamma);
 	}
-	public void quitarGamma(Gamma gammaQueSeVa) {
+	public void quitarGamma(Gama gammaQueSeVa) {
 		gammas.remove(gammaQueSeVa);
 	}
 	

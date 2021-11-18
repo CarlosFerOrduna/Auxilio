@@ -1,6 +1,5 @@
 package base;
 
-import derivadaGeneral.Combustible;
 import derivadaGeneral.Marca;
 import derivadaGeneral.Modelo;
 

@@ -1,7 +1,7 @@
 package derivadaUsuario;
 
+import base.Especialidad;
 import base.Usuario;
-import derivadaGeneral.Especialidad;
 import derivadaGeneral.Valoracion;
 import derivadaProblema.ProblemaComplejo;
 

@@ -4,14 +4,14 @@ import derivadaProblema.ProblemaComplejo;
 
 public class Reparacion {
 
-	private Costo costo;
+	private Double costo;
 	private ProblemaComplejo problemaReparado;
 	
-	public Reparacion(Costo costo, ProblemaComplejo problemaReparado) {
+	public Reparacion(Double costo, ProblemaComplejo problemaReparado) {
 		this.costo = costo;
 		this.problemaReparado = problemaReparado;
 	}
-	public Costo getCosto() {
+	public Double getCosto() {
 		return costo;
 	}
 	public ProblemaComplejo getProblemaReparado() {
