@@ -3,16 +3,16 @@ package derivadaGeneral;
 public class Valoracion {
 
 	private String mensaje;
-	private double puntaje;
+	private double puntajeEnEstrellas;
 
-	public Valoracion(String mensaje, double puntaje) {
+	public Valoracion(String mensaje, double puntajeEnEstrellas) {
 		this.mensaje = mensaje;
-		this.puntaje = puntaje;
+		this.puntajeEnEstrellas = puntajeEnEstrellas;
 	}
 	public String getMensaje() {
 		return mensaje;
 	}
 	public double getPuntaje() {
-		return puntaje;
+		return puntajeEnEstrellas;
 	}
 }

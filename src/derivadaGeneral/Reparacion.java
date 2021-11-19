@@ -1,20 +1,20 @@
 package derivadaGeneral;
 
-import derivadaProblema.ProblemaComplejo;
-
 public class Reparacion {
 
-	private Double costo;
-	private ProblemaComplejo problemaReparado;
-	
-	public Reparacion(Double costo, ProblemaComplejo problemaReparado) {
+	private String detalle;
+	private double costo;
+
+	public Reparacion(String detalle, double costo) {
+		this.detalle = detalle;
 		this.costo = costo;
-		this.problemaReparado = problemaReparado;
 	}
-	public Double getCosto() {
+
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public double getCosto() {
 		return costo;
-	}
-	public ProblemaComplejo getProblemaReparado() {
-		return problemaReparado;
 	}
 }

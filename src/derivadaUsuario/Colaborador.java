@@ -1,8 +1,8 @@
 package derivadaUsuario;
 
 import base.Usuario;
-import base.Vehiculo;
 import derivadaGeneral.Valoracion;
+import derivadaGeneral.Vehiculo;
 import derivadaProblema.ProblemaSimple;
 
 public class Colaborador extends Usuario {

@@ -1,18 +1,18 @@
 package derivadaGeneral;
 
-public class Repuesto {
+public class Combustible {
 
+	private double costo;
 	private String nombre;
-	private Double costo;
 	
-	public Repuesto(String nombre, Double costo) {
+	public Combustible(String nombre, double costo) {
 		this.nombre = nombre;
 		this.costo = costo;
 	}
 	public String getNombre() {
 		return nombre;
 	}
-	public Double getCosto() {
+	public double getCosto() {
 		return costo;
 	}
 }

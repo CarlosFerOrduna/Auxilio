@@ -1,37 +1,38 @@
-package derivadaVehiculo;
+package derivadaGeneral;
 
-import base.Combustible;
-import base.Vehiculo;
-import derivadaGeneral.Marca;
-import derivadaGeneral.Modelo;
+import base.Gama;
 
-public class Moto extends Vehiculo {
+public class Vehiculo {
 
-	public Moto(Modelo modelo, Marca marca, int version, Combustible combustible) {
+	private Modelo modelo;
+	private Marca marca;
+	private int version;
+	private Combustible combustible;
+
+	public Vehiculo(Modelo modelo, Marca marca, int version, Combustible combustible) {
 		this.modelo = modelo;
 		this.marca = marca;
 		this.version = version;
 		this.combustible = combustible;
 	}
 
-	@Override
 	public Modelo getModelo() {
 		return modelo;
 	}
 
-	@Override
 	public Marca getMarca() {
 		return marca;
 	}
 
-	@Override
 	public int getVersion() {
 		return version;
 	}
 
-	@Override
 	public Combustible getCombustible() {
 		return combustible;
 	}
 
+	public Gama getGama() {
+		return gama;
+	}
 }

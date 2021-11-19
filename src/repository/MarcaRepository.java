@@ -16,4 +16,8 @@ public class MarcaRepository {
 	public void quitarMarca(Marca marcaQueSeVa) {
 		marcas.remove(marcaQueSeVa);
 	}
+
+	public List<Marca> getLista() {
+		return marcas;
+	}
 }

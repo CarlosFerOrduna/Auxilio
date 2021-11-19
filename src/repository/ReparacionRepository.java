@@ -17,4 +17,8 @@ public class ReparacionRepository {
 		reparaciones.remove(reparacionQueSeVa);
 	}
 
+	public List<Reparacion> obtenerLista() {
+		return reparaciones;
+	}
+
 }

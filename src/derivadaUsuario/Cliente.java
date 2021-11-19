@@ -1,8 +1,8 @@
 package derivadaUsuario;
 
 import base.Usuario;
-import base.Vehiculo;
 import derivadaGeneral.Valoracion;
+import derivadaGeneral.Vehiculo;
 
 public class Cliente extends Usuario {
 
