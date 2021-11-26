@@ -3,7 +3,7 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import derivadaGeneral.Combustible;
+import domain.Combustible;
 
 public class CombustibleRepository {
 

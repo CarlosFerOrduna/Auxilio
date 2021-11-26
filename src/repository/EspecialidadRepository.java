@@ -3,7 +3,7 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import derivadaGeneral.Especialidad;
+import domain.Especialidad;
 
 public class EspecialidadRepository {
 

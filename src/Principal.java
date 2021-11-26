@@ -1,16 +1,10 @@
-import derivadaCombustible.Biodiesel;
-import derivadaCombustible.Electricidad;
-import derivadaCombustible.Gas;
-import derivadaCombustible.Gasoil;
-import derivadaCombustible.Nafta;
-import derivadaGeneral.AreaDeTrabajo;
-import derivadaGeneral.Combustible;
-import derivadaGeneral.Especialidad;
-import derivadaGeneral.Marca;
-import derivadaGeneral.Modelo;
-import derivadaGeneral.Problema;
-import derivadaGeneral.Reparacion;
-import derivadaGeneral.Valoracion;
+import domain.AreaDeTrabajo;
+import domain.Combustible;
+import domain.Especialidad;
+import domain.Marca;
+import domain.Modelo;
+import domain.Problema;
+import domain.Reparacion;
 import repository.AreaDeTrabajoRepository;
 import repository.CombustibleRepository;
 import repository.EspecialidadRepository;
@@ -18,7 +12,6 @@ import repository.MarcaRepository;
 import repository.ModeloRepository;
 import repository.ProblemaRepository;
 import repository.ReparacionRepository;
-import repository.ValoracionRepository;
 
 public class Principal {
 
@@ -84,33 +77,27 @@ public class Principal {
 		modelos.agregarModelo(new Modelo("Kuga Hibrida"));
 
 		ReparacionRepository reparaciones = new ReparacionRepository();
-		//trabajos gomeria
+		// trabajos gomeria
 		reparaciones.agregarReparacion(new Reparacion("Cambio de cubierta", 1500));
 		reparaciones.agregarReparacion(new Reparacion("Rotacion neumaticos", 3500));
-		//trabajos electricidad
+		// trabajos electricidad
 		reparaciones.agregarReparacion(new Reparacion("Cambio de fusibles", 1000));
 		reparaciones.agregarReparacion(new Reparacion("Cambio de perillas", 1000));
-		//trabajos lavadero
+		// trabajos lavadero
 		reparaciones.agregarReparacion(new Reparacion("Lavado de chazis", 5000));
 		reparaciones.agregarReparacion(new Reparacion("Lavado de motor", 5000));
-		//trabajos alineacion y balanceo
+		// trabajos alineacion y balanceo
 		reparaciones.agregarReparacion(new Reparacion("Cambio de tren delantero", 10000));
 		reparaciones.agregarReparacion(new Reparacion("Cambio de amortiguadores", 10000));
-		//mecanica general
+		// mecanica general
 		reparaciones.agregarReparacion(new Reparacion("Problema de bujias", 5000));
 		reparaciones.agregarReparacion(new Reparacion("Cambio de transmision", 2000));
-		
+
 		AreaDeTrabajoRepository areas = new AreaDeTrabajoRepository();
 		areas.agregarArea(new AreaDeTrabajo(null));
-		
+
 		EspecialidadRepository especialidades = new EspecialidadRepository();
 		especialidades.agregarEspecialidad(new Especialidad("", null));
-		
-		ValoracionRepository valoraciones = new ValoracionRepository();
-		valoraciones.agregarValoracion(new Valoracion("Exelente", 5));
-		valoraciones.agregarValoracion(new Valoracion("Muy bueno", 4));
-		valoraciones.agregarValoracion(new Valoracion("Bueno", 3));
-		valoraciones.agregarValoracion(new Valoracion("Malo", 2));
-		valoraciones.agregarValoracion(new Valoracion("Muy malo", 1));
+
 	}
 }

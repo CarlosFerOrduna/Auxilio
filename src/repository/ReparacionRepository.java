@@ -3,7 +3,7 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import derivadaGeneral.Reparacion;
+import domain.Reparacion;
 
 public class ReparacionRepository {
 

@@ -3,7 +3,7 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import derivadaGeneral.AreaDeTrabajo;
+import domain.AreaDeTrabajo;
 
 public class AreaDeTrabajoRepository {
 

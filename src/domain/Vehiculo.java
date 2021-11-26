@@ -1,4 +1,4 @@
-package derivadaGeneral;
+package domain;
 
 import base.Gama;
 

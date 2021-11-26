@@ -3,7 +3,7 @@ package repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import derivadaGeneral.Modelo;
+import domain.Modelo;
 
 public class ModeloRepository {
 
