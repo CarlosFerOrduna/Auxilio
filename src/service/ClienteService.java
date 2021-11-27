@@ -1,33 +1,65 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JOptionPane;
 
 import domain.Cliente;
+import domain.Colaborador;
+import domain.Problema;
+import domain.Profesional;
+import domain.Reparacion;
+import repository.ClienteRepository;
 
 public class ClienteService {
 
-	List<Cliente> clientes = new ArrayList<Cliente>();
+	ClienteRepository clientes = new ClienteRepository();
 
-	public void agregarCliente(Cliente nuevoCliente) {
-		clientes.add(nuevoCliente);
-	}
+	public void crearCliente() {
 
-	public void pedirAyuda() {
+		String nombre;
+		Integer dni;
 
-	}
+		nombre = JOptionPane.showInputDialog("Ingrese su nombre");
+		dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su dni"));
 
-	public void enviarVehiculoProfesional() {
-
-	}
-
-	public void pagar(Cliente clienteQuePaga) {
+		clientes.agregarCliente(new Cliente(nombre, dni));
 
 	}
 
-	public Cliente buscarClientePorNombre(String nombre) {
-		for (Cliente cliente : clientes) {
+	public String pedirAyuda(Cliente clienteEnProblemas, Problema problema) {
+
+		if (problema.getTipo().equalsIgnoreCase("simple")) {
+			return clienteEnProblemas.getVehiculo() + problema.getDetalle() + clienteEnProblemas.getUbicacion();
+		}
+		return null;
+	}
+
+	public String enviarVehiculoProfesional(Cliente clienteEnProblemas, Problema problema) {
+
+		if (problema.getTipo().equalsIgnoreCase("complejo")) {
+			return clienteEnProblemas.getVehiculo() + problema.getDetalle();
+		}
+		return null;
+	}
+
+	public String pagarProfesional(Cliente clienteQuePaga, Reparacion reparacionAPagar, Profesional profesional) {
+		return reparacionAPagar.getCosto() + clienteQuePaga.getMedioDePago() + profesional.getMetodoDeFacturacion();
+	}
+
+	public String pagarColaboradir(Cliente clienteQuePaga, Reparacion reparacionAPagar, Colaborador colaborador) {
+		return reparacionAPagar.getCosto() + clienteQuePaga.getMedioDePago() + colaborador.getMetodoDeFactura();
+	}
+
+	public Cliente buscarClientePorNombre() {
+
+		String nombre;
+
+		nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente que busca");
+
+		for (Cliente cliente : clientes.verArray()) {
 			if (cliente.getNombre().equalsIgnoreCase(nombre)) {
+
+				JOptionPane.showInternalMessageDialog(null, cliente);
+
 				return cliente;
 			}
 		}
@@ -35,13 +67,20 @@ public class ClienteService {
 		return null;
 	}
 
-	public Cliente buscarClientePorDni(Integer dni) {
-		for (Cliente cliente : clientes) {
+	public Cliente buscarClientePorDni() {
+
+		Integer dni;
+
+		dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del cliente que busca"));
+
+		for (Cliente cliente : clientes.verArray()) {
 			if (cliente.getDni() == dni) {
+
+				JOptionPane.showInternalMessageDialog(null, cliente);
+
 				return cliente;
 			}
 		}
-
 		return null;
 	}
 }

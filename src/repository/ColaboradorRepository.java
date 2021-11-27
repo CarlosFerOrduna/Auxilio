@@ -12,4 +12,7 @@ public class ColaboradorRepository {
 	public void agregarColaborador(Colaborador nuevoColaborador) {
 		colaboradores.add(nuevoColaborador);
 	}
+	public List<Colaborador> verArray(){
+		return colaboradores;
+	}
 }

@@ -8,10 +8,9 @@ public class Cliente {
 	private String medioDePago;
 	private Integer dni;
 
-	public Cliente(String nombre, Integer dni, Vehiculo vehiculo) {
+	public Cliente(String nombre, Integer dni) {
 		this.nombre = nombre;
 		this.dni = dni;
-		this.vehiculo = vehiculo;
 	}
 
 	public String getNombre() {

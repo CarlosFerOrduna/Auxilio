@@ -13,4 +13,8 @@ public class ProfesionalRepository {
 		profesionales.add(nuevoProfesional);
 	}
 	
+	public List<Profesional> verArray(){
+		return profesionales;
+	}
+	
 }

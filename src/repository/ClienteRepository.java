@@ -12,5 +12,9 @@ public class ClienteRepository {
 	public void agregarCliente(Cliente nuevoCliente) {
 		clientes.add(nuevoCliente);
 	}
+	
+	public List<Cliente> verArray(){
+		return clientes;
+	}
 
 }
