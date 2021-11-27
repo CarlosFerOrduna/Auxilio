@@ -1,38 +1,26 @@
 package domain;
 
-import base.Gama;
-
 public class Vehiculo {
 
-	private Modelo modelo;
-	private Marca marca;
-	private int version;
-	private Combustible combustible;
-
-	public Vehiculo(Modelo modelo, Marca marca, int version, Combustible combustible) {
+	private String modelo;
+	private String marca;
+	private String patente;
+	
+	public Vehiculo(String modelo, String marca, String patente) {
 		this.modelo = modelo;
 		this.marca = marca;
-		this.version = version;
-		this.combustible = combustible;
+		this.patente = patente;
 	}
 
-	public Modelo getModelo() {
+	public String getModelo() {
 		return modelo;
 	}
 
-	public Marca getMarca() {
+	public String getMarca() {
 		return marca;
 	}
-
-	public int getVersion() {
-		return version;
+	public String getPatente() {
+		return patente;
 	}
 
-	public Combustible getCombustible() {
-		return combustible;
-	}
-
-	public Gama getGama() {
-		return gama;
-	}
 }

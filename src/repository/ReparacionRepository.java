@@ -13,12 +13,4 @@ public class ReparacionRepository {
 		reparaciones.add(nuevaReparacion);
 	}
 
-	public void quitarReparacion(Reparacion reparacionQueSeVa) {
-		reparaciones.remove(reparacionQueSeVa);
-	}
-
-	public List<Reparacion> obtenerLista() {
-		return reparaciones;
-	}
-
 }

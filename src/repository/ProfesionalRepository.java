@@ -1,28 +1,16 @@
-package service;
+package repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import domain.Problema;
 import domain.Profesional;
 
-public class ProfesionalService {
+public class ProfesionalRepository {
 
 	List<Profesional> profesionales = new ArrayList<Profesional>();
-
+	
 	public void agregarProfesional(Profesional nuevoProfesional) {
 		profesionales.add(nuevoProfesional);
 	}
-
-	public void presupuestar(Problema problema) {
-
-	}
-
-	public void aceptarAutoAReparar() {
-
-	}
-
-	public void cobrar() {
-
-	}
+	
 }

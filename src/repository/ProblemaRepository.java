@@ -12,12 +12,4 @@ public class ProblemaRepository {
 	public void agregarProblema(Problema nuevoProblema) {
 		problemas.add(nuevoProblema);
 	}
-
-	public void quitarProblema(Problema problemaQueSeVa) {
-		problemas.remove(problemaQueSeVa);
-	}
-
-	public List<Problema> obtenerLista() {
-		return problemas;
-	}
 }
