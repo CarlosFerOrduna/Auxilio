@@ -12,4 +12,8 @@ public class VehiculoRepository {
 	public void agregarVehiculo(Vehiculo nuevoVehiculo) {
 		vehiculos.add(nuevoVehiculo);
 	}
+	
+	public List<Vehiculo> verArray(){
+		return vehiculos;
+	}
 }

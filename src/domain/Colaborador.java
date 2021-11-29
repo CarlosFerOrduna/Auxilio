@@ -5,23 +5,24 @@ public class Colaborador {
 	private Vehiculo vehiculo;
 	private String nombre;
 	private Integer dni;
-	private String ubicacion = "Estoy aca";
+	private Integer ubicacion;
 	private String metodoDeFacturacion;
 
-	public Colaborador(String nombre, Integer dni) {
+	public Colaborador(String nombre, Integer dni, Integer ubicacion) {
 		this.nombre = nombre;
 		this.dni = dni;
+		this.ubicacion = ubicacion;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
-	
+
 	public Integer getDni() {
 		return dni;
 	}
 
-	public String getUbicacion() {
+	public Integer getUbicacion() {
 		return ubicacion;
 	}
 
@@ -31,6 +32,11 @@ public class Colaborador {
 
 	public String getMetodoDeFactura() {
 		return metodoDeFacturacion;
+	}
+
+	public void setUbicacion(Integer ubicacion) {
+		this.ubicacion = ubicacion;
+
 	}
 
 }

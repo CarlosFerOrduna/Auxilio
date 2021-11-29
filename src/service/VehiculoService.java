@@ -1,22 +1,20 @@
 package service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JOptionPane;
 
 import domain.Vehiculo;
+import repository.VehiculoRepository;
 
 public class VehiculoService {
 
-	List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
+	VehiculoRepository vehiculos = new VehiculoRepository();
 
 	public void crearVehiculo() {
-		
+
 		int elejirModelo;
-		
+
 		String modelo = null;
-		
+
 		String[] marcas = { "Ford", "Chevrolet", "Volkswagen", "Fiat", "Honda" };
 
 		int elejirMarca = JOptionPane.showOptionDialog(null, "Seleccione la marca de su vehiculo", "Selccion marca", 0,
@@ -70,28 +68,27 @@ public class VehiculoService {
 		}
 
 		String patente = JOptionPane.showInputDialog("Ingrese la patente");
-		
-		if(patente.contains(patente))
 
-		vehiculos.add(new Vehiculo(marcas[elejirMarca], modelo, patente));
+		if (patente.contains(patente))
+
+			vehiculos.agregarVehiculo(new Vehiculo(marcas[elejirMarca], modelo, patente));
 	}
 
 	public void historialDeReparaciones() {
 
-		
 	}
 
 	public Vehiculo buscarVehiculoPorPatente() {
-		
+
 		String patente;
-		
+
 		patente = JOptionPane.showInputDialog("Ingrese la patente del vehiculo que busca");
-		
-		for (Vehiculo vehiculo : vehiculos) {
+
+		for (Vehiculo vehiculo : vehiculos.verArray()) {
 			if (vehiculo.getPatente().equalsIgnoreCase(patente)) {
-				
+
 				JOptionPane.showInternalMessageDialog(null, vehiculo);
-				
+
 				return vehiculo;
 			}
 		}

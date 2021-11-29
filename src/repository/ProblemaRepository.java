@@ -12,4 +12,5 @@ public class ProblemaRepository {
 	public void agregarProblema(Problema nuevoProblema) {
 		problemas.add(nuevoProblema);
 	}
+
 }

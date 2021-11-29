@@ -15,11 +15,13 @@ public class ColaboradorService {
 
 		String nombre;
 		Integer dni;
+		Integer ubicacion;
 
 		nombre = JOptionPane.showInputDialog("Ingrese su nombre");
 		dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su dni"));
+		ubicacion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su ubicacion con valor nomerico"));
 
-		colaboradores.agregarColaborador(new Colaborador(nombre, dni));
+		colaboradores.agregarColaborador(new Colaborador(nombre, dni, ubicacion));
 	}
 
 	public Colaborador buscarColaboradorPorNombre() {
@@ -61,4 +63,150 @@ public class ColaboradorService {
 	public String cobrar(Cliente cliente, Reparacion reparacion, Colaborador colaborador) {
 		return cliente.getMedioDePago() + reparacion.getCosto() + colaborador.getMetodoDeFactura();
 	}
+
+	public Colaborador colaboradoresCercaDeColaborador() {
+
+		int decicion;
+
+		String[] opciones = { "Buscar por nombre", "Buscar por dni" };
+
+		decicion = JOptionPane.showOptionDialog(null, "Seleccione el metodo de busqueda", "Busqueda", 0,
+				JOptionPane.QUESTION_MESSAGE, null, opciones, 0);
+
+		if (decicion == 0) {
+			String nombre;
+
+			nombre = JOptionPane.showInputDialog("Ingrese el nombre del colaborador que esta buscando");
+
+			for (Colaborador colaboradorElegido : colaboradores.verArray()) {
+
+				if (colaboradorElegido.getNombre().equalsIgnoreCase(nombre)) {
+
+					JOptionPane.showMessageDialog(null, "Usted a seleccionado a: " + colaboradorElegido.getNombre());
+
+					for (Colaborador colaboradorBuscado : colaboradores.verArray()) {
+
+						if (colaboradorBuscado.getUbicacion() == colaboradorElegido.getUbicacion()
+								&& colaboradorBuscado.getDni() != colaboradorElegido.getDni()) {
+
+							JOptionPane.showMessageDialog(null, "El colaborador mas cercano a "
+									+ colaboradorElegido.getNombre() + " es " + colaboradorBuscado.getNombre());
+
+							return colaboradorBuscado;
+
+						} else if (colaboradorBuscado.getUbicacion() != colaboradorElegido.getUbicacion()) {
+
+							for (Colaborador colaboradorComparador : colaboradores.verArray()) {
+
+								if (colaboradorElegido.getUbicacion() < colaboradorBuscado.getUbicacion()
+										&& colaboradorBuscado.getUbicacion() < colaboradorComparador.getUbicacion()
+										|| colaboradorElegido.getUbicacion() > colaboradorBuscado.getUbicacion()
+												&& colaboradorBuscado.getUbicacion() > colaboradorComparador
+														.getUbicacion()
+												&& colaboradorBuscado.getDni() != colaboradorComparador.getDni()
+												&& colaboradorComparador.getDni() != colaboradorElegido.getDni()) {
+
+									JOptionPane.showMessageDialog(null, "El colaborador mas cercano a "
+											+ colaboradorElegido.getNombre() + " es " + colaboradorBuscado.getNombre());
+
+									return colaboradorBuscado;
+
+								} else if (colaboradorElegido.getUbicacion() < colaboradorComparador.getUbicacion()
+										&& colaboradorComparador.getUbicacion() < colaboradorBuscado.getUbicacion()
+										|| colaboradorElegido.getUbicacion() > colaboradorComparador.getUbicacion()
+												&& colaboradorComparador.getUbicacion() > colaboradorBuscado
+														.getUbicacion()
+												&& colaboradorBuscado.getDni() != colaboradorComparador.getDni()
+												&& colaboradorComparador.getDni() != colaboradorElegido.getDni()) {
+
+									JOptionPane.showMessageDialog(null,
+											"El colaborador mas cerca de " + colaboradorElegido.getNombre() + " es "
+													+ colaboradorComparador.getNombre());
+
+									return colaboradorComparador;
+
+								}
+
+							}
+
+						}
+					}
+				} else {
+
+					JOptionPane.showMessageDialog(null, "No contamos con un colaborador llamado " + nombre);
+
+				}
+
+			}
+
+		} else {
+
+			int dni;
+
+			dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del colaborador que busca"));
+
+			for (Colaborador colaboradorElegido : colaboradores.verArray()) {
+
+				if (colaboradorElegido.getDni() == dni) {
+
+					JOptionPane.showMessageDialog(null,
+							"El colaborador que usted a elegido es " + colaboradorElegido.getNombre());
+
+					for (Colaborador colaboradorBuscado : colaboradores.verArray()) {
+
+						if (colaboradorElegido.getUbicacion() == colaboradorElegido.getUbicacion()
+								&& colaboradorElegido.getDni() != colaboradorBuscado.getDni()) {
+							JOptionPane.showMessageDialog(null, "El colaborador mas cercano a "
+									+ colaboradorElegido.getNombre() + " es " + colaboradorBuscado.getNombre());
+
+						} else {
+
+							for (Colaborador colaboradorComparador : colaboradores.verArray()) {
+
+								if (colaboradorElegido.getUbicacion() < colaboradorBuscado.getUbicacion()
+										&& colaboradorBuscado.getUbicacion() < colaboradorComparador.getUbicacion()
+										|| colaboradorElegido.getUbicacion() > colaboradorBuscado.getUbicacion()
+												&& colaboradorBuscado.getUbicacion() > colaboradorComparador
+														.getUbicacion()
+												&& colaboradorBuscado.getDni() != colaboradorComparador.getDni()
+												&& colaboradorComparador.getDni() != colaboradorElegido.getDni()) {
+
+									JOptionPane.showMessageDialog(null, "El colaborador mas cercano a "
+											+ colaboradorElegido.getNombre() + " es " + colaboradorBuscado.getNombre());
+
+									return colaboradorBuscado;
+
+								} else if (colaboradorElegido.getUbicacion() < colaboradorComparador.getUbicacion()
+										&& colaboradorComparador.getUbicacion() < colaboradorBuscado.getUbicacion()
+										|| colaboradorElegido.getUbicacion() > colaboradorComparador.getUbicacion()
+												&& colaboradorComparador.getUbicacion() > colaboradorBuscado
+														.getUbicacion()
+												&& colaboradorBuscado.getDni() != colaboradorComparador.getDni()
+												&& colaboradorComparador.getDni() != colaboradorElegido.getDni()) {
+
+									JOptionPane.showMessageDialog(null,
+											"El colaborador mas cerca a " + colaboradorElegido.getNombre() + " es "
+													+ colaboradorComparador.getNombre());
+
+									return colaboradorComparador;
+
+									
+								}
+							}
+
+						}
+
+					}
+
+				} else {
+
+					JOptionPane.showMessageDialog(null, "No contamos con un colaborador con dni " + dni);
+
+				}
+			}
+		}
+		return null;
+	}
+
+	
 }
