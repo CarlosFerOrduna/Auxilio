@@ -9,7 +9,7 @@ public class VehiculoService {
 
 	VehiculoRepository vehiculos = new VehiculoRepository();
 
-	public void crearVehiculo() {
+	public Vehiculo crearVehiculo() {
 
 		int elejirModelo;
 
@@ -72,6 +72,8 @@ public class VehiculoService {
 		if (patente.contains(patente))
 
 			vehiculos.agregarVehiculo(new Vehiculo(marcas[elejirMarca], modelo, patente));
+		
+		return new Vehiculo(marcas[elejirMarca], modelo, patente);
 	}
 
 	public void historialDeReparaciones() {

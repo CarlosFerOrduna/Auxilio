@@ -9,7 +9,7 @@ public class ProblemaService {
 
 	ProblemaRepository problemas = new ProblemaRepository();
 	
-	public void crearProblema() {
+	public Problema crearProblema() {
 		
 		String descripcion;
 		int decicion;
@@ -20,6 +20,8 @@ public class ProblemaService {
 		
 		descripcion = JOptionPane.showInputDialog("Ingrese una descripcion del problema");
 		
-		problemas.agregarProblema(new Problema(opciones[decicion], descripcion));		
+		problemas.agregarProblema(new Problema(opciones[decicion], descripcion));
+		
+		return new Problema(opciones[decicion], descripcion);
 	}
 }

@@ -11,17 +11,22 @@ public class ColaboradorService {
 
 	ColaboradorRepository colaboradores = new ColaboradorRepository();
 
-	public void crearColaborador() {
+	public Colaborador crearColaborador() {
 
 		String nombre;
 		Integer dni;
 		Integer ubicacion;
 
-		nombre = JOptionPane.showInputDialog("Ingrese su nombre");
-		dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su dni"));
-		ubicacion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su ubicacion con valor nomerico"));
+		nombre = JOptionPane.showInputDialog(null, "Ingrese su nombre", "Crear colaborador",
+				JOptionPane.INFORMATION_MESSAGE);
+		dni = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su dni", "Crear colaborador",
+				JOptionPane.INFORMATION_MESSAGE));
+		ubicacion = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su ubicacion con valor nomerico",
+				"Crear colaborador", JOptionPane.INFORMATION_MESSAGE));
 
 		colaboradores.agregarColaborador(new Colaborador(nombre, dni, ubicacion));
+
+		return new Colaborador(nombre, dni, ubicacion);
 	}
 
 	public Colaborador buscarColaboradorPorNombre() {
@@ -190,7 +195,6 @@ public class ColaboradorService {
 
 									return colaboradorComparador;
 
-									
 								}
 							}
 
@@ -208,5 +212,4 @@ public class ColaboradorService {
 		return null;
 	}
 
-	
 }

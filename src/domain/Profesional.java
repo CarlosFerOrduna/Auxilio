@@ -4,7 +4,7 @@ public class Profesional {
 
 	private String especialidad;
 	private String nombre;
-	private String ubicacion = "Estoy aca";
+	private Integer direccion;
 	private String metodoDeFacturacion;
 
 	public Profesional(String nombre, String especialidad) {
@@ -20,8 +20,8 @@ public class Profesional {
 		return especialidad;
 	}
 
-	public String getUbicacion() {
-		return ubicacion;
+	public Integer getDireccion() {
+		return direccion;
 	}
 
 	public String getMetodoDeFacturacion() {

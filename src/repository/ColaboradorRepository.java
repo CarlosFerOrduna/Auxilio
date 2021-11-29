@@ -8,11 +8,17 @@ import domain.Colaborador;
 public class ColaboradorRepository {
 
 	List<Colaborador> colaboradores = new ArrayList<Colaborador>();
-	
-	public void agregarColaborador(Colaborador nuevoColaborador) {
+
+	public Colaborador agregarColaborador(Colaborador nuevoColaborador) {
+
 		colaboradores.add(nuevoColaborador);
+
+		return null;
 	}
-	public List<Colaborador> verArray(){
+
+	public List<Colaborador> verArray() {
+
 		return colaboradores;
+
 	}
 }

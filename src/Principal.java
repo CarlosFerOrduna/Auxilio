@@ -1,26 +1,21 @@
 import service.ClienteService;
 import service.ColaboradorService;
+import service.ProblemaService;
 import service.VehiculoService;
 
 public class Principal {
 
 	public static void main(String[] args) {
 
-//		ClienteService cliente = new ClienteService();
-//		VehiculoService vehiculo = new VehiculoService();
-//
-//		cliente.crearCliente();
-//
-//		vehiculo.crearVehiculo();
-//		
-//		cliente.asociarVehiculo(vehiculo.buscarVehiculoPorPatente());
-
+		ClienteService cliente = new ClienteService();
 		ColaboradorService colaborador = new ColaboradorService();
-		
-		colaborador.crearColaborador();
-		colaborador.crearColaborador();
-		colaborador.crearColaborador();
+		VehiculoService vehiculo = new VehiculoService();
+		ProblemaService problema = new ProblemaService();
 
-		colaborador.colaboradoresCercaDeColaborador();
+		colaborador.crearColaborador();
+		colaborador.crearColaborador();
+		colaborador.crearColaborador();
+		cliente.asociarVehiculo(cliente.crearCliente(), vehiculo.crearVehiculo());
+		cliente.pedirAyuda(problema.crearProblema(), colaborador);
 	}
 }
