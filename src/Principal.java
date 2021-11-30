@@ -16,9 +16,7 @@ public class Principal {
 		colaborador.crearColaborador();
 		colaborador.crearColaborador();
 		cliente.asociarVehiculo(cliente.crearCliente(), vehiculo.crearVehiculo());
-		cliente.crearCliente();
-		cliente.crearCliente();
-		cliente.pedirAyuda(problema.crearProblema(), colaborador);
+		cliente.pedirAyuda(cliente.buscarCliente(), problema.crearProblema(), colaborador.ubicacionColaboradores());
 
 	}
 }

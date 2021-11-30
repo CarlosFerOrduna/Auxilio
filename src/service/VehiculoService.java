@@ -1,5 +1,8 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import domain.Vehiculo;
@@ -7,7 +10,7 @@ import repository.VehiculoRepository;
 
 public class VehiculoService {
 
-	VehiculoRepository vehiculos = new VehiculoRepository();
+	List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
 
 	public Vehiculo crearVehiculo() {
 
@@ -71,7 +74,7 @@ public class VehiculoService {
 
 		if (patente.contains(patente))
 
-			vehiculos.agregarVehiculo(new Vehiculo(marcas[elejirMarca], modelo, patente));
+			vehiculos.add(new Vehiculo(marcas[elejirMarca], modelo, patente));
 
 		return new Vehiculo(marcas[elejirMarca], modelo, patente);
 	}
@@ -86,7 +89,7 @@ public class VehiculoService {
 
 		patente = JOptionPane.showInputDialog("Ingrese la patente del vehiculo que busca");
 
-		for (Vehiculo vehiculo : vehiculos.verLista()) {
+		for (Vehiculo vehiculo : vehiculos) {
 			if (vehiculo.getPatente().equalsIgnoreCase(patente)) {
 
 				JOptionPane.showInternalMessageDialog(null, vehiculo);

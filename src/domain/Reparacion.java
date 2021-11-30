@@ -3,9 +3,9 @@ package domain;
 public class Reparacion {
 
 	private String detalle;
-	private double costo;
+	private Double costo;
 
-	public Reparacion(String detalle, double costo) {
+	public Reparacion(String detalle, Double costo) {
 		this.detalle = detalle;
 		this.costo = costo;
 	}

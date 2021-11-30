@@ -1,5 +1,8 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import domain.Cliente;
@@ -8,12 +11,10 @@ import domain.Problema;
 import domain.Profesional;
 import domain.Reparacion;
 import domain.Vehiculo;
-import repository.ClienteRepository;
-import repository.ColaboradorRepository;
 
 public class ClienteService {
 
-	ClienteRepository clientes = new ClienteRepository();
+	List<Cliente> clientes = new ArrayList<Cliente>();
 
 	public Cliente crearCliente() {
 
@@ -25,266 +26,159 @@ public class ClienteService {
 		dni = Integer.parseInt(
 				JOptionPane.showInputDialog(null, "Ingrese su dni", "Crear cliente", JOptionPane.INFORMATION_MESSAGE));
 
-		clientes.agregarCliente(new Cliente(nombre, dni));
+		clientes.add(new Cliente(nombre, dni));
 
 		return new Cliente(nombre, dni);
 
 	}
 
-	public String pedirAyuda(Problema problema, ColaboradorService colaboradorAlRescate) {
+	public String pedirAyuda(Cliente cliente, Problema problema, List<Colaborador> colaboradorCercano) {
+
+		Integer ubicacionCliente;
 
 		if (problema.getTipo().equalsIgnoreCase("Simple")) {
 
-			ColaboradorRepository colaboradores = new ColaboradorRepository();
+			for (Colaborador colaborador : colaboradorCercano) {
 
-			Integer ubicacionCliente;
-			String nombre;
-			Integer dni;
+				ubicacionCliente = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su ubicacion actual",
+						"Buscar colaborador cercano", JOptionPane.INFORMATION_MESSAGE));
 
-			int decicion;
+				cliente.setUbicacion(ubicacionCliente);
 
-			String[] opciones = { "Buscar por nombre", "Buscar por dni" };
+				if (colaborador.getUbicacion() == cliente.getUbicacion()) {
 
-			decicion = JOptionPane.showOptionDialog(null, "Seleccione la forma de buscar al cliente que necesita ayuda",
-					"Seleccion", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, 0);
+					JOptionPane.showMessageDialog(null,
+							"El colaborador mas cercano a ti es " + colaborador.getNombre());
 
-			if (decicion == 0) {
+					JOptionPane.showMessageDialog(null,
+							cliente.getVehiculo().getMarca() + " " + cliente.getVehiculo().getModelo() + " "
+									+ problema.getDetalle() + " " + cliente.getNombre() + " " + cliente.getUbicacion(),
+							"Se enviara el siguiente mensaje al colaborador " + colaborador.getNombre(),
+							JOptionPane.INFORMATION_MESSAGE);
 
-				nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del cliente", "Buscar cliente",
-						JOptionPane.INFORMATION_MESSAGE);
+					return cliente.getVehiculo().getMarca() + cliente.getVehiculo().getModelo() + problema
+							+ cliente.getNombre() + cliente.getUbicacion();
 
-				for (Cliente cliente : clientes.verLista()) {
+				} else {
 
-					if (cliente.getNombre().equalsIgnoreCase(nombre)) {
+					for (Colaborador colaborador1 : colaboradorCercano) {
 
-						JOptionPane.showMessageDialog(null, "El cliente que a seleccionado es " + cliente.getNombre(),
-								"Buscar cliente", JOptionPane.INFORMATION_MESSAGE);
+						if (cliente.getUbicacion() < colaborador.getUbicacion()
+								&& colaborador.getUbicacion() < colaborador1.getUbicacion()
+								&& colaborador.getDni() != colaborador1.getDni()
+								|| cliente.getUbicacion() > colaborador.getUbicacion()
+										&& colaborador.getUbicacion() > colaborador1.getUbicacion()
+										&& colaborador.getDni() != colaborador1.getDni()) {
 
-						ubicacionCliente = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su ubicacion",
-								"Buscar cliente", JOptionPane.INFORMATION_MESSAGE));
+							JOptionPane.showMessageDialog(null,
+									"El colaborador mas cercano a ti es " + colaborador.getNombre());
 
-						cliente.setUbicacion(ubicacionCliente);
+							JOptionPane.showMessageDialog(null,
+									cliente.getVehiculo().getMarca() + " " + cliente.getVehiculo().getModelo() + " "
+											+ problema.getDetalle() + " " + cliente.getNombre() + " "
+											+ cliente.getUbicacion(),
+									"Se enviara el siguiente mensaje al colaborador " + colaborador.getNombre(),
+									JOptionPane.INFORMATION_MESSAGE);
 
-						for (Colaborador colaborador : colaboradores.verLista()) {
+							return cliente.getVehiculo().getMarca() + cliente.getVehiculo().getModelo() + problema
+									+ cliente.getNombre() + cliente.getUbicacion();
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"El colaborador mas cercano a ti es " + colaborador1.getNombre());
 
-							if (colaborador.getUbicacion() == cliente.getUbicacion()) {
+							JOptionPane.showMessageDialog(null,
+									cliente.getVehiculo().getMarca() + " " + cliente.getVehiculo().getModelo() + " "
+											+ problema.getDetalle() + " " + cliente.getNombre() + " "
+											+ cliente.getUbicacion(),
+									"Se enviara el siguiente mensaje al colaborador " + colaborador1.getNombre(),
+									JOptionPane.INFORMATION_MESSAGE);
 
-								JOptionPane.showMessageDialog(null, colaborador.getNombre() + "Esta cerca de ti");
-
-								JOptionPane.showMessageDialog(null,
-										cliente.getUbicacion() + cliente.getVehiculo().getMarca() + " "
-												+ cliente.getVehiculo().getModelo() + " " + cliente.getNombre() + " "
-												+ problema,
-										"Se enviara el siguiente mensaje al colaboreador: " + colaborador.getNombre(),
-										JOptionPane.INFORMATION_MESSAGE);
-
-								return colaboradorAlRescate.brindarAyuda(cliente.getVehiculo().getMarca()
-										+ cliente.getVehiculo().getModelo() + cliente.getNombre() + problema,
-										colaborador);
-
-							} else {
-
-								for (Colaborador colaborador2 : colaboradores.verLista()) {
-
-									if (cliente.getUbicacion() < colaborador.getUbicacion()
-											&& colaborador.getUbicacion() < colaborador2.getUbicacion()
-											|| cliente.getUbicacion() > colaborador.getUbicacion()
-													&& colaborador.getUbicacion() > colaborador2.getUbicacion()
-													&& colaborador.getDni() != colaborador2.getDni()) {
-
-										JOptionPane.showMessageDialog(null,
-												colaborador.getNombre() + " esta cerca de ti", "Buscar colaborador",
-												JOptionPane.INFORMATION_MESSAGE);
-
-										JOptionPane.showMessageDialog(null,
-												cliente.getVehiculo().getMarca() + " "
-														+ cliente.getVehiculo().getModelo() + " " + cliente.getNombre()
-														+ " " + problema,
-												"Se enviara el siguiente mensaje al colaboreador: "
-														+ colaborador.getNombre(),
-												JOptionPane.INFORMATION_MESSAGE);
-
-										return colaboradorAlRescate.brindarAyuda(cliente.getVehiculo().getMarca()
-												+ cliente.getVehiculo().getModelo() + cliente.getNombre() + problema,
-												colaborador);
-									} else {
-
-										JOptionPane.showMessageDialog(null,
-												colaborador2.getNombre() + "Esta cerca de ti", "Buscar colaborador",
-												JOptionPane.INFORMATION_MESSAGE);
-
-										JOptionPane.showMessageDialog(null,
-												cliente.getUbicacion() + cliente.getVehiculo().getMarca() + " "
-														+ cliente.getVehiculo().getModelo() + " " + cliente.getNombre()
-														+ " " + problema,
-												"Se enviara el siguiente mensaje al colaboreador: "
-														+ colaborador2.getNombre(),
-												JOptionPane.INFORMATION_MESSAGE);
-
-										return colaboradorAlRescate.brindarAyuda(cliente.getVehiculo().getMarca()
-												+ cliente.getVehiculo().getModelo() + cliente.getNombre() + problema,
-												colaborador2);
-
-									}
-
-								}
-
-							}
-
+							return cliente.getVehiculo().getMarca() + " " + cliente.getVehiculo().getModelo() + " "
+									+ problema.getDetalle() + " " + cliente.getNombre() + " " + cliente.getUbicacion();
 						}
-					} else {
-
-						JOptionPane.showMessageDialog(null,
-								"Lo sentimos, no contamos con un cliente con el nombre " + nombre, "Buscar cliente",
-								JOptionPane.INFORMATION_MESSAGE);
-
 					}
-
-				}
-
-			} else {
-
-				dni = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el dni del cliente en problemas",
-						"Buscar cliente", JOptionPane.INFORMATION_MESSAGE));
-
-				for (Cliente cliente : clientes.verLista()) {
-
-					if (cliente.getDni() == dni) {
-
-						JOptionPane.showMessageDialog(null, "Usted a elegido a " + cliente.getNombre(),
-								"Buscar cliente", JOptionPane.INFORMATION_MESSAGE);
-
-						ubicacionCliente = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su ubicacion",
-								"Buscar colaborador cerca", JOptionPane.INFORMATION_MESSAGE));
-
-						cliente.setUbicacion(ubicacionCliente);
-
-						for (Colaborador colaborador : colaboradores.verLista()) {
-
-							if (colaborador.getUbicacion() == cliente.getUbicacion()) {
-
-								JOptionPane.showMessageDialog(null, colaborador.getNombre() + "Esta cerca de ti");
-
-								JOptionPane.showMessageDialog(null,
-										cliente.getVehiculo().getMarca() + " " + cliente.getVehiculo().getModelo() + " "
-												+ cliente.getNombre() + " " + problema,
-										"Se enviara el siguiente mensaje al colaboreador: " + colaborador.getNombre(),
-										JOptionPane.INFORMATION_MESSAGE);
-
-								return colaboradorAlRescate.brindarAyuda(cliente.getVehiculo().getMarca()
-										+ cliente.getVehiculo().getModelo() + cliente.getNombre() + problema,
-										colaborador);
-							} else {
-
-								for (Colaborador colaborador2 : colaboradores.verLista()) {
-
-									if (cliente.getUbicacion() < colaborador.getUbicacion()
-											&& colaborador.getUbicacion() < colaborador2.getUbicacion()
-											|| cliente.getUbicacion() > colaborador.getUbicacion()
-													&& colaborador.getUbicacion() > colaborador2.getUbicacion()
-													&& colaborador.getDni() != colaborador2.getDni()) {
-
-										JOptionPane.showMessageDialog(null,
-												colaborador.getNombre() + "Esta cerca de ti", "Buscar colaborador",
-												JOptionPane.INFORMATION_MESSAGE);
-
-										JOptionPane.showMessageDialog(null,
-												cliente.getVehiculo().getMarca() + " "
-														+ cliente.getVehiculo().getModelo() + " " + cliente.getNombre()
-														+ " " + problema,
-												"Se enviara el siguiente mensaje al colaboreador: "
-														+ colaborador.getNombre(),
-												JOptionPane.INFORMATION_MESSAGE);
-
-										return colaboradorAlRescate.brindarAyuda(cliente.getVehiculo().getMarca()
-												+ cliente.getVehiculo().getModelo() + cliente.getNombre() + problema,
-												colaborador);
-									} else {
-										JOptionPane.showMessageDialog(null,
-												colaborador.getNombre() + "Esta cerca de ti", "Buscar colaborador",
-												JOptionPane.INFORMATION_MESSAGE);
-
-										JOptionPane.showMessageDialog(null,
-												cliente.getVehiculo().getMarca() + " "
-														+ cliente.getVehiculo().getModelo() + " " + cliente.getNombre()
-														+ " " + problema,
-												"Se enviara el siguiente mensaje al colaboreador: "
-														+ colaborador2.getNombre(),
-												JOptionPane.INFORMATION_MESSAGE);
-
-										return colaboradorAlRescate.brindarAyuda(cliente.getVehiculo().getMarca()
-												+ cliente.getVehiculo().getModelo() + cliente.getNombre() + problema,
-												colaborador2);
-									}
-
-								}
-
-							}
-						}
-
-					}
-
 				}
 			}
-
-		} else {
-
-			JOptionPane.showMessageDialog(null, "Ese tipo de problemas son para profesionales");
-
 		}
 
+		JOptionPane.showMessageDialog(null, "Ese tipo de problemas es para profesionales", "Seleccion",
+				JOptionPane.INFORMATION_MESSAGE);
+
 		return null;
+
 	}
 
-	public String enviarVehiculoProfesional(Cliente clienteEnProblemas, Problema problema) {
+	public String enviarVehiculoProfesional(Cliente cliente, Problema problema, Profesional profesional) {
 
 		if (problema.getTipo().equalsIgnoreCase("complejo")) {
 
-			return clienteEnProblemas.getVehiculo() + problema.getDetalle();
+			JOptionPane.showMessageDialog(null,
+					cliente.getNombre() + " " + cliente.getVehiculo().getMarca() + " "
+							+ cliente.getVehiculo().getModelo() + " " + problema.getDetalle(),
+					"Se enviara el siguiente mensaje al profesional " + profesional.getNombre(),
+					JOptionPane.INFORMATION_MESSAGE);
+
+			return cliente.getNombre() + " " + cliente.getVehiculo().getMarca() + " "
+					+ cliente.getVehiculo().getModelo() + " " + problema.getDetalle();
 
 		}
+
+		JOptionPane.showMessageDialog(null, "Ese tipo de problemas es para colaboradores", "Seleccion",
+				JOptionPane.INFORMATION_MESSAGE);
 
 		return null;
 	}
 
-	public String pagarProfesional(Cliente clienteQuePaga, Reparacion reparacionAPagar, Profesional profesional) {
-		return reparacionAPagar.getCosto() + clienteQuePaga.getMedioDePago() + profesional.getMetodoDeFacturacion();
+	public String pagarProfesional(Cliente cliente, Reparacion reparacion, Profesional profesional) {
+		
+		return reparacion.getCosto() + cliente.getMedioDePago() + profesional.getMetodoDeFacturacion();
+		
 	}
 
-	public String pagarColaborador(Cliente clienteQuePaga, Reparacion reparacionAPagar, Colaborador colaborador) {
-		return reparacionAPagar.getCosto() + clienteQuePaga.getMedioDePago() + colaborador.getMetodoDeFactura();
+	public String pagarColaborador(Cliente cliente, Reparacion reparacionAPagar, Colaborador colaborador) {
+		return reparacionAPagar.getCosto() + cliente.getMedioDePago() + colaborador.getMetodoDeFactura();
 	}
 
-	public Cliente buscarClientePorNombre() {
+	public Cliente buscarCliente() {
 
-		String nombre;
+		String[] opciones = { "Buscar por dni", "Buscar por nombre" };
 
-		nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente que busca");
+		int decision;
 
-		for (Cliente cliente : clientes.verLista()) {
-			if (cliente.getNombre().equalsIgnoreCase(nombre)) {
+		decision = JOptionPane.showOptionDialog(null, "Como quiere buscar al cliente", "Buscar cliente", 0,
+				JOptionPane.INFORMATION_MESSAGE, null, opciones, 0);
 
-				JOptionPane.showInternalMessageDialog(null, cliente.getNombre());
+		if (decision == 0) {
 
-				return cliente;
+			Integer dni;
+
+			dni = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el dni del cliente que busca",
+					"Buscar cliente", JOptionPane.INFORMATION_MESSAGE));
+
+			for (Cliente cliente : clientes) {
+				if (cliente.getDni() == dni) {
+
+					JOptionPane.showInternalMessageDialog(null, "El cliente seleccionado es " + cliente.getNombre(),
+							"Buscar cliente", JOptionPane.INFORMATION_MESSAGE);
+
+					return cliente;
+				}
 			}
-		}
+		} else {
 
-		return null;
-	}
+			String nombre;
 
-	public Cliente buscarClientePorDni() {
+			nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del cliente que busca", "Buscar cliente",
+					JOptionPane.INFORMATION_MESSAGE);
 
-		Integer dni;
+			for (Cliente cliente : clientes) {
+				if (cliente.getNombre().equalsIgnoreCase(nombre)) {
 
-		dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del cliente que busca"));
+					JOptionPane.showInternalMessageDialog(null, "El cliente seleccionado es " + cliente.getNombre(),
+							"Buscar cliente", JOptionPane.INFORMATION_MESSAGE);
 
-		for (Cliente cliente : clientes.verLista()) {
-			if (cliente.getDni() == dni) {
-
-				JOptionPane.showInternalMessageDialog(null, cliente.getNombre());
-
-				return cliente;
+					return cliente;
+				}
 			}
 		}
 		return null;

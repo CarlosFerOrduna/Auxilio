@@ -1,16 +1,19 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
-import domain.Problema;
+import domain.Cliente;
 import domain.Profesional;
-import repository.ProfesionalRepository;
+import domain.Reparacion;
 
 public class ProfesionalService {
 
-	ProfesionalRepository profesionales = new ProfesionalRepository();
+	List<Profesional> profesionales = new ArrayList<Profesional>();
 
-	public void crearProfesional() {
+	public Profesional crearProfesional() {
 
 		String nombre;
 		String especialidad;
@@ -18,51 +21,88 @@ public class ProfesionalService {
 		nombre = JOptionPane.showInputDialog("Ingrese su nombre");
 		especialidad = JOptionPane.showInputDialog("Ingrese su especialidad");
 
-		profesionales.agregarProfesional(new Profesional(nombre, especialidad));
+		profesionales.add(new Profesional(nombre, especialidad));
+
+		return new Profesional(nombre, especialidad);
 	}
 
-	public void presupuestar(Problema problema) {
+	public String presupuestar(String mensajeCliente, Reparacion reparacion, Cliente cliente) {
+
+		JOptionPane.showMessageDialog(null,
+				"Detalle de la reparacion: " + reparacion.getDetalle() + ", Costo de la reparacion: "
+						+ reparacion.getCosto(),
+				"Se enviara el siguiente mensaje al cliente " + cliente.getNombre(), JOptionPane.INFORMATION_MESSAGE);
+
+		return reparacion.getDetalle() + " " + reparacion.getCosto();
 
 	}
 
-	public void aceptarAutoAReparar() {
-
+	public void reparar(Cliente cliente) {
+		
+		
+		
 	}
 
 	public void cobrar() {
 
 	}
 
-	public Profesional buscarProfesionalPorNombre() {
-		String nombre;
+	public Profesional buscarProfesional() {
 
-		nombre = JOptionPane.showInputDialog("Ingrese el nombre del profesional que busca");
+		String[] opciones = { "Buscar por nombre", "Buscar por direccion", "Buscar por especialidad" };
 
-		for (Profesional profesional : profesionales.verArray()) {
-			if (profesional.getNombre().equalsIgnoreCase(nombre)) {
+		int decision;
 
-				JOptionPane.showInternalMessageDialog(null, profesional);
+		decision = JOptionPane.showOptionDialog(null, "¿Como desea buscar?", "Bucar profesional", 0,
+				JOptionPane.INFORMATION_MESSAGE, null, opciones, 0);
 
-				return profesional;
+		if (decision == 0) {
+
+			String nombre;
+
+			nombre = JOptionPane.showInputDialog("Ingrese el nombre del profesional que busca");
+
+			for (Profesional profesional : profesionales) {
+				if (profesional.getNombre().equalsIgnoreCase(nombre)) {
+
+					JOptionPane.showMessageDialog(null, "El profesional elegido es " + profesional);
+
+					return profesional;
+				}
 			}
+		} else if (decision == 1) {
+
+			String direccion;
+
+			direccion = JOptionPane.showInputDialog(null, "Ingrese la direccion", "Buscar profesional",
+					JOptionPane.INFORMATION_MESSAGE);
+
+			for (Profesional profesional : profesionales) {
+
+				if (profesional.getDireccion().equalsIgnoreCase(direccion)) {
+
+					JOptionPane.showMessageDialog(null, "El profesional elegido es " + profesional.getNombre());
+
+					return profesional;
+				}
+			}
+
+		} else {
+			String especialidad;
+
+			especialidad = JOptionPane.showInputDialog("Ingrese la especialidad que busca");
+
+			for (Profesional profesional : profesionales) {
+				if (profesional.getEspecialidad().equalsIgnoreCase(especialidad)) {
+
+					JOptionPane.showInternalMessageDialog(null, "El profesional elegido es " + profesional);
+
+					return profesional;
+				}
+			}
+
 		}
 		return null;
 	}
 
-	public Profesional buscarProfesionalPorEspecialidad() {
-
-		String especialidad;
-
-		especialidad = JOptionPane.showInputDialog("Ingrese la especialidad que busca");
-
-		for (Profesional profesional : profesionales.verArray()) {
-			if (profesional.getEspecialidad().equalsIgnoreCase(especialidad)) {
-
-				JOptionPane.showInternalMessageDialog(null, profesional);
-
-				return profesional;
-			}
-		}
-		return null;
-	}
 }
