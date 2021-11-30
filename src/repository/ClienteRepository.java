@@ -13,7 +13,7 @@ public class ClienteRepository {
 		clientes.add(nuevoCliente);
 	}
 	
-	public List<Cliente> verArray(){
+	public List<Cliente> verLista(){
 		return clientes;
 	}
 

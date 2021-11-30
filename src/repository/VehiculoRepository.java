@@ -13,7 +13,7 @@ public class VehiculoRepository {
 		vehiculos.add(nuevoVehiculo);
 	}
 	
-	public List<Vehiculo> verArray(){
+	public List<Vehiculo> verLista(){
 		return vehiculos;
 	}
 }

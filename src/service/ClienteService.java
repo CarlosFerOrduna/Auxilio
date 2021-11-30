@@ -37,6 +37,7 @@ public class ClienteService {
 
 			ColaboradorRepository colaboradores = new ColaboradorRepository();
 
+			Integer ubicacionCliente;
 			String nombre;
 			Integer dni;
 
@@ -52,21 +53,19 @@ public class ClienteService {
 				nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del cliente", "Buscar cliente",
 						JOptionPane.INFORMATION_MESSAGE);
 
-				for (Cliente cliente : clientes.verArray()) {
+				for (Cliente cliente : clientes.verLista()) {
 
 					if (cliente.getNombre().equalsIgnoreCase(nombre)) {
 
 						JOptionPane.showMessageDialog(null, "El cliente que a seleccionado es " + cliente.getNombre(),
 								"Buscar cliente", JOptionPane.INFORMATION_MESSAGE);
 
-						Integer ubicacionCliente;
-
 						ubicacionCliente = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su ubicacion",
 								"Buscar cliente", JOptionPane.INFORMATION_MESSAGE));
 
 						cliente.setUbicacion(ubicacionCliente);
 
-						for (Colaborador colaborador : colaboradores.verArray()) {
+						for (Colaborador colaborador : colaboradores.verLista()) {
 
 							if (colaborador.getUbicacion() == cliente.getUbicacion()) {
 
@@ -85,7 +84,7 @@ public class ClienteService {
 
 							} else {
 
-								for (Colaborador colaborador2 : colaboradores.verArray()) {
+								for (Colaborador colaborador2 : colaboradores.verLista()) {
 
 									if (cliente.getUbicacion() < colaborador.getUbicacion()
 											&& colaborador.getUbicacion() < colaborador2.getUbicacion()
@@ -114,8 +113,6 @@ public class ClienteService {
 												colaborador2.getNombre() + "Esta cerca de ti", "Buscar colaborador",
 												JOptionPane.INFORMATION_MESSAGE);
 
-										cliente.setUbicacion(ubicacionCliente);
-
 										JOptionPane.showMessageDialog(null,
 												cliente.getUbicacion() + cliente.getVehiculo().getMarca() + " "
 														+ cliente.getVehiculo().getModelo() + " " + cliente.getNombre()
@@ -133,8 +130,8 @@ public class ClienteService {
 								}
 
 							}
-						}
 
+						}
 					} else {
 
 						JOptionPane.showMessageDialog(null,
@@ -150,23 +147,21 @@ public class ClienteService {
 				dni = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el dni del cliente en problemas",
 						"Buscar cliente", JOptionPane.INFORMATION_MESSAGE));
 
-				for (Cliente cliente : clientes.verArray()) {
+				for (Cliente cliente : clientes.verLista()) {
 
 					if (cliente.getDni() == dni) {
 
 						JOptionPane.showMessageDialog(null, "Usted a elegido a " + cliente.getNombre(),
 								"Buscar cliente", JOptionPane.INFORMATION_MESSAGE);
 
-						Integer ubicacionCliente;
-
 						ubicacionCliente = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su ubicacion",
 								"Buscar colaborador cerca", JOptionPane.INFORMATION_MESSAGE));
 
 						cliente.setUbicacion(ubicacionCliente);
 
-						for (Colaborador colaborador : colaboradores.verArray()) {
+						for (Colaborador colaborador : colaboradores.verLista()) {
 
-							if (colaborador.getUbicacion() == ubicacionCliente) {
+							if (colaborador.getUbicacion() == cliente.getUbicacion()) {
 
 								JOptionPane.showMessageDialog(null, colaborador.getNombre() + "Esta cerca de ti");
 
@@ -181,11 +176,11 @@ public class ClienteService {
 										colaborador);
 							} else {
 
-								for (Colaborador colaborador2 : colaboradores.verArray()) {
+								for (Colaborador colaborador2 : colaboradores.verLista()) {
 
-									if (ubicacionCliente < colaborador.getUbicacion()
+									if (cliente.getUbicacion() < colaborador.getUbicacion()
 											&& colaborador.getUbicacion() < colaborador2.getUbicacion()
-											|| ubicacionCliente > colaborador.getUbicacion()
+											|| cliente.getUbicacion() > colaborador.getUbicacion()
 													&& colaborador.getUbicacion() > colaborador2.getUbicacion()
 													&& colaborador.getDni() != colaborador2.getDni()) {
 
@@ -226,6 +221,7 @@ public class ClienteService {
 
 							}
 						}
+
 					}
 
 				}
@@ -265,10 +261,10 @@ public class ClienteService {
 
 		nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente que busca");
 
-		for (Cliente cliente : clientes.verArray()) {
+		for (Cliente cliente : clientes.verLista()) {
 			if (cliente.getNombre().equalsIgnoreCase(nombre)) {
 
-				JOptionPane.showInternalMessageDialog(null, cliente);
+				JOptionPane.showInternalMessageDialog(null, cliente.getNombre());
 
 				return cliente;
 			}
@@ -283,10 +279,10 @@ public class ClienteService {
 
 		dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del cliente que busca"));
 
-		for (Cliente cliente : clientes.verArray()) {
+		for (Cliente cliente : clientes.verLista()) {
 			if (cliente.getDni() == dni) {
 
-				JOptionPane.showInternalMessageDialog(null, cliente);
+				JOptionPane.showInternalMessageDialog(null, cliente.getNombre());
 
 				return cliente;
 			}

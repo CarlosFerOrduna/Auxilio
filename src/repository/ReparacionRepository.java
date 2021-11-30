@@ -13,4 +13,8 @@ public class ReparacionRepository {
 		reparaciones.add(nuevaReparacion);
 	}
 
+	public List<Reparacion> verLista() {
+		return reparaciones;
+	}
+
 }

@@ -34,7 +34,7 @@ public class ColaboradorService {
 
 		nombre = JOptionPane.showInputDialog("Ingrese el nombre del colaborador que busca");
 
-		for (Colaborador colaborador : colaboradores.verArray()) {
+		for (Colaborador colaborador : colaboradores.verLista()) {
 			if (colaborador.getNombre().equalsIgnoreCase(nombre)) {
 
 				JOptionPane.showMessageDialog(null, colaborador);
@@ -50,7 +50,7 @@ public class ColaboradorService {
 
 		dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del colaborador que busca"));
 
-		for (Colaborador colaborador : colaboradores.verArray()) {
+		for (Colaborador colaborador : colaboradores.verLista()) {
 			if (colaborador.getDni() == dni) {
 
 				JOptionPane.showInternalMessageDialog(null, colaborador);
@@ -83,13 +83,13 @@ public class ColaboradorService {
 
 			nombre = JOptionPane.showInputDialog("Ingrese el nombre del colaborador que esta buscando");
 
-			for (Colaborador colaboradorElegido : colaboradores.verArray()) {
+			for (Colaborador colaboradorElegido : colaboradores.verLista()) {
 
 				if (colaboradorElegido.getNombre().equalsIgnoreCase(nombre)) {
 
 					JOptionPane.showMessageDialog(null, "Usted a seleccionado a: " + colaboradorElegido.getNombre());
 
-					for (Colaborador colaboradorBuscado : colaboradores.verArray()) {
+					for (Colaborador colaboradorBuscado : colaboradores.verLista()) {
 
 						if (colaboradorBuscado.getUbicacion() == colaboradorElegido.getUbicacion()
 								&& colaboradorBuscado.getDni() != colaboradorElegido.getDni()) {
@@ -101,7 +101,7 @@ public class ColaboradorService {
 
 						} else if (colaboradorBuscado.getUbicacion() != colaboradorElegido.getUbicacion()) {
 
-							for (Colaborador colaboradorComparador : colaboradores.verArray()) {
+							for (Colaborador colaboradorComparador : colaboradores.verLista()) {
 
 								if (colaboradorElegido.getUbicacion() < colaboradorBuscado.getUbicacion()
 										&& colaboradorBuscado.getUbicacion() < colaboradorComparador.getUbicacion()
@@ -150,14 +150,14 @@ public class ColaboradorService {
 
 			dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del colaborador que busca"));
 
-			for (Colaborador colaboradorElegido : colaboradores.verArray()) {
+			for (Colaborador colaboradorElegido : colaboradores.verLista()) {
 
 				if (colaboradorElegido.getDni() == dni) {
 
 					JOptionPane.showMessageDialog(null,
 							"El colaborador que usted a elegido es " + colaboradorElegido.getNombre());
 
-					for (Colaborador colaboradorBuscado : colaboradores.verArray()) {
+					for (Colaborador colaboradorBuscado : colaboradores.verLista()) {
 
 						if (colaboradorElegido.getUbicacion() == colaboradorElegido.getUbicacion()
 								&& colaboradorElegido.getDni() != colaboradorBuscado.getDni()) {
@@ -166,7 +166,7 @@ public class ColaboradorService {
 
 						} else {
 
-							for (Colaborador colaboradorComparador : colaboradores.verArray()) {
+							for (Colaborador colaboradorComparador : colaboradores.verLista()) {
 
 								if (colaboradorElegido.getUbicacion() < colaboradorBuscado.getUbicacion()
 										&& colaboradorBuscado.getUbicacion() < colaboradorComparador.getUbicacion()

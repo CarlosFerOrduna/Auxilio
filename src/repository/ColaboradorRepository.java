@@ -16,7 +16,7 @@ public class ColaboradorRepository {
 		return null;
 	}
 
-	public List<Colaborador> verArray() {
+	public List<Colaborador> verLista() {
 
 		return colaboradores;
 

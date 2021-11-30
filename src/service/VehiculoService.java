@@ -72,7 +72,7 @@ public class VehiculoService {
 		if (patente.contains(patente))
 
 			vehiculos.agregarVehiculo(new Vehiculo(marcas[elejirMarca], modelo, patente));
-		
+
 		return new Vehiculo(marcas[elejirMarca], modelo, patente);
 	}
 
@@ -86,7 +86,7 @@ public class VehiculoService {
 
 		patente = JOptionPane.showInputDialog("Ingrese la patente del vehiculo que busca");
 
-		for (Vehiculo vehiculo : vehiculos.verArray()) {
+		for (Vehiculo vehiculo : vehiculos.verLista()) {
 			if (vehiculo.getPatente().equalsIgnoreCase(patente)) {
 
 				JOptionPane.showInternalMessageDialog(null, vehiculo);
