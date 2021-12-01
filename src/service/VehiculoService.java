@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import domain.Vehiculo;
-import repository.VehiculoRepository;
 
 public class VehiculoService {
 

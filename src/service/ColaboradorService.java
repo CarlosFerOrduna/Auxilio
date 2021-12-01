@@ -42,12 +42,13 @@ public class ColaboradorService {
 
 			String nombre;
 
-			nombre = JOptionPane.showInputDialog("Ingrese el nombre del colaborador que busca");
+			nombre = JOptionPane.showInputDialog(null, "Ingrese el nombre del colaborador que busca",
+					"Buscar colaborador", JOptionPane.INFORMATION_MESSAGE);
 
 			for (Colaborador colaborador : colaboradores) {
 				if (colaborador.getNombre().equalsIgnoreCase(nombre)) {
 
-					JOptionPane.showMessageDialog(null, colaborador);
+					JOptionPane.showMessageDialog(null, colaborador.getNombre());
 
 					return colaborador;
 				}
@@ -69,13 +70,40 @@ public class ColaboradorService {
 		return null;
 	}
 
-	public List<Colaborador> ubicacionColaboradores(){
-		return colaboradores;
+	public Colaborador buscarColaboradorCercano(Integer ubicacionCarcana) {
+
+		for (Colaborador colaborador : colaboradores) {
+			if (colaborador.getUbicacion() == ubicacionCarcana) {
+				return colaborador;
+			} else {
+				for (Colaborador colaborador1 : colaboradores) {
+					if (ubicacionCarcana < colaborador.getUbicacion()
+							&& colaborador.getUbicacion() < colaborador1.getUbicacion()
+							&& colaborador.getDni() != colaborador1.getDni()
+							|| ubicacionCarcana > colaborador.getUbicacion()
+									&& colaborador.getUbicacion() > colaborador1.getUbicacion()
+									&& colaborador.getDni() != colaborador1.getDni()) {
+
+						JOptionPane.showMessageDialog(null, "El colaborador cerca es " + colaborador.getNombre(),
+								"Colaborador cercano", JOptionPane.INFORMATION_MESSAGE);
+
+						return colaborador;
+
+					} else {
+
+						JOptionPane.showMessageDialog(null, "El colaborador cerca es " + colaborador1.getNombre(),
+								"Colaborador cercano", JOptionPane.INFORMATION_MESSAGE);
+
+						return colaborador1;
+					}
+				}
+			}
+		}
+		return null;
+
 	}
 
 	public String cobrar(String mensajeDeColaborador, Reparacion reparacion) {
-		
-		
-		
+		return null;
 	}
 }

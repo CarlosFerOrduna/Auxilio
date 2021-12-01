@@ -13,10 +13,10 @@ public class Principal {
 		ProblemaService problema = new ProblemaService();
 
 		colaborador.crearColaborador();
-		colaborador.crearColaborador();
-		colaborador.crearColaborador();
+
 		cliente.asociarVehiculo(cliente.crearCliente(), vehiculo.crearVehiculo());
-		cliente.pedirAyuda(cliente.buscarCliente(), problema.crearProblema(), colaborador.ubicacionColaboradores());
+
+		cliente.pedirAyuda(cliente.buscarCliente(), problema.crearProblema(), colaborador.buscarColaborador());
 
 	}
 }
