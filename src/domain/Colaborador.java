@@ -2,7 +2,6 @@ package domain;
 
 public class Colaborador {
 
-	private Vehiculo vehiculo;
 	private String nombre;
 	private Integer dni;
 	private Integer ubicacion;
@@ -26,14 +25,10 @@ public class Colaborador {
 		return ubicacion;
 	}
 
-	public Vehiculo getVehiculo() {
-		return vehiculo;
-	}
-
 	public Integer getCuenta() {
 		return cuenta;
 	}
-	
+
 	public void setCuenta(Integer cuenta) {
 		this.cuenta = cuenta;
 	}
