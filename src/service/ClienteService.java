@@ -9,14 +9,13 @@ import domain.Cliente;
 import domain.Colaborador;
 import domain.Problema;
 import domain.Profesional;
-import domain.Reparacion;
 import domain.Vehiculo;
 
 public class ClienteService {
 
 	List<Cliente> clientes = new ArrayList<Cliente>();
 
-	public Cliente crearCliente() {
+	public void crearCliente() {
 
 		String nombre;
 		Integer dni;
@@ -28,26 +27,22 @@ public class ClienteService {
 
 		clientes.add(new Cliente(nombre, dni));
 
-		return new Cliente(nombre, dni);
-
 	}
 
 	public String pedirAyuda(Cliente cliente, Problema problema, Colaborador colaborador) {
-		System.out.println(problema.getTipo() + problema.getDetalle());
 
-		System.out.println(cliente.getVehiculo().getMarca() + cliente.getVehiculo().getModelo());
-		System.out.println(cliente.getNombre() + cliente.getUbicacion());
-		System.out.println(colaborador.getNombre());
 		if (problema.getTipo().equalsIgnoreCase("Simple")) {
 
 			JOptionPane.showMessageDialog(null,
-					cliente.getVehiculo().getMarca() + " " + cliente.getVehiculo().getModelo() + " "
-							+ problema.getDetalle() + " " + cliente.getNombre() + " " + cliente.getUbicacion(),
+					"Mi vehiculo marca " + cliente.getVehiculo().getMarca() + " modelo "
+							+ cliente.getVehiculo().getModelo() + ", " + problema.getDetalle() + ", mi nombre es "
+							+ cliente.getNombre(),
 					"Se enviara el siguiente mensaje al colaborador " + colaborador.getNombre(),
 					JOptionPane.INFORMATION_MESSAGE);
 
-			return cliente.getVehiculo().getMarca() + cliente.getVehiculo().getModelo() + problema + cliente.getNombre()
-					+ cliente.getUbicacion();
+			return "Mi vehiculo marca " + cliente.getVehiculo().getMarca() + " modelo "
+					+ cliente.getVehiculo().getModelo() + ", " + problema.getDetalle() + ", mi nombre es "
+					+ cliente.getNombre();
 
 		} else {
 			JOptionPane.showMessageDialog(null, "Ese tipo de problemas es para profesionales", "Seleccion",
@@ -80,19 +75,28 @@ public class ClienteService {
 		return null;
 	}
 
-	public String pagarProfesional(Cliente cliente, Reparacion reparacion, Profesional profesional) {
+	public String pagarProfesional(Cliente cliente, Integer montoPagar, Profesional profesioanl) {
 
-		return reparacion.getCosto() + cliente.getMedioDePago() + profesional.getMetodoDeFacturacion();
+		cliente.setPago(cliente.getPago() - montoPagar);
+		profesioanl.setCuenta(montoPagar);
 
+		JOptionPane.showMessageDialog(null,
+				"Usted le ha enviado el monto de " + montoPagar + " al profesional " + profesioanl.getNombre(),
+				"Pagar profesional", JOptionPane.INFORMATION_MESSAGE);
+
+		return "Usted le ha enviado el monto de " + montoPagar + " al profesional " + profesioanl.getNombre();
 	}
 
-	public String pagarColaborador(Reparacion reparacionAPagar, Colaborador colaborador) {
+	public String pagarColaborador(Cliente cliente, Integer montoPagar, Colaborador colaborador) {
 
-		for (Cliente cliente : clientes) {
+		cliente.setPago(cliente.getPago() - montoPagar);
+		colaborador.setCuenta(montoPagar);
 
-			return reparacionAPagar.getCosto() + cliente.getMedioDePago() + colaborador.getMetodoDeFactura();
-		}
-		return null;
+		JOptionPane.showMessageDialog(null,
+				"Usted le ha enviado el monto de " + montoPagar + " al profesional " + colaborador.getNombre(),
+				"Pagar profesional", JOptionPane.INFORMATION_MESSAGE);
+
+		return "Usted le ha enviado el monto de " + montoPagar + " al profesional " + colaborador.getNombre();
 	}
 
 	public Integer darUbicacionDeCliente() {
@@ -130,8 +134,10 @@ public class ClienteService {
 							"Buscar cliente", JOptionPane.INFORMATION_MESSAGE);
 
 					return cliente;
+
 				}
 			}
+
 		} else {
 
 			String nombre;
@@ -140,20 +146,25 @@ public class ClienteService {
 					JOptionPane.INFORMATION_MESSAGE);
 
 			for (Cliente cliente : clientes) {
+
 				if (cliente.getNombre().equalsIgnoreCase(nombre)) {
 
 					JOptionPane.showInternalMessageDialog(null, "El cliente seleccionado es " + cliente.getNombre(),
 							"Buscar cliente", JOptionPane.INFORMATION_MESSAGE);
 
 					return cliente;
+
 				}
 			}
 		}
+
 		return null;
 	}
 
-	public void asociarVehiculo(Cliente cliente, Vehiculo vehiculo) {
+	public Cliente asociarVehiculo(Cliente cliente, Vehiculo vehiculo) {
 
 		cliente.setVehiculo(vehiculo);
+
+		return cliente;
 	}
 }

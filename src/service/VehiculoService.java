@@ -71,14 +71,12 @@ public class VehiculoService {
 
 		String patente = JOptionPane.showInputDialog("Ingrese la patente");
 
-		if (patente.contains(patente))
-
-			vehiculos.add(new Vehiculo(marcas[elejirMarca], modelo, patente));
-
+		vehiculos.add(new Vehiculo(marcas[elejirMarca], modelo, patente));
+		
 		return new Vehiculo(marcas[elejirMarca], modelo, patente);
 	}
 
-	public void historialDeReparaciones() {
+	public void historialDeReparaciones(Vehiculo vehiculo) {
 
 	}
 

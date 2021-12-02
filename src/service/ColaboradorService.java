@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+
 import domain.Colaborador;
 import domain.Reparacion;
 
@@ -46,22 +47,28 @@ public class ColaboradorService {
 					"Buscar colaborador", JOptionPane.INFORMATION_MESSAGE);
 
 			for (Colaborador colaborador : colaboradores) {
+
 				if (colaborador.getNombre().equalsIgnoreCase(nombre)) {
 
-					JOptionPane.showMessageDialog(null, colaborador.getNombre());
+					JOptionPane.showMessageDialog(null, "El colaborador que buscas es " + colaborador.getNombre(),
+							"Busqueda colaborador", JOptionPane.INFORMATION_MESSAGE);
 
 					return colaborador;
 				}
 			}
 		} else {
+
 			Integer dni;
 
 			dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del colaborador que busca"));
 
 			for (Colaborador colaborador : colaboradores) {
+
 				if (colaborador.getDni() == dni) {
 
-					JOptionPane.showInternalMessageDialog(null, colaborador);
+					JOptionPane.showInternalMessageDialog(null,
+							"El colaborador que buscas es " + colaborador.getNombre(), "Busqueda de colaborador",
+							JOptionPane.INFORMATION_MESSAGE);
 
 					return colaborador;
 				}
@@ -70,40 +77,12 @@ public class ColaboradorService {
 		return null;
 	}
 
-	public Colaborador buscarColaboradorCercano(Integer ubicacionCarcana) {
+	public Integer brindarAyuda(String mensajeDeAyuda, Reparacion reparacion) {
 
-		for (Colaborador colaborador : colaboradores) {
-			if (colaborador.getUbicacion() == ubicacionCarcana) {
-				return colaborador;
-			} else {
-				for (Colaborador colaborador1 : colaboradores) {
-					if (ubicacionCarcana < colaborador.getUbicacion()
-							&& colaborador.getUbicacion() < colaborador1.getUbicacion()
-							&& colaborador.getDni() != colaborador1.getDni()
-							|| ubicacionCarcana > colaborador.getUbicacion()
-									&& colaborador.getUbicacion() > colaborador1.getUbicacion()
-									&& colaborador.getDni() != colaborador1.getDni()) {
+		Integer montoACobrar;
 
-						JOptionPane.showMessageDialog(null, "El colaborador cerca es " + colaborador.getNombre(),
-								"Colaborador cercano", JOptionPane.INFORMATION_MESSAGE);
+		montoACobrar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el monto a cobrar por la reparacion"));
 
-						return colaborador;
-
-					} else {
-
-						JOptionPane.showMessageDialog(null, "El colaborador cerca es " + colaborador1.getNombre(),
-								"Colaborador cercano", JOptionPane.INFORMATION_MESSAGE);
-
-						return colaborador1;
-					}
-				}
-			}
-		}
-		return null;
-
-	}
-
-	public String cobrar(String mensajeDeColaborador, Reparacion reparacion) {
-		return null;
+		return montoACobrar;
 	}
 }

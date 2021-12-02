@@ -5,7 +5,7 @@ public class Profesional {
 	private String especialidad;
 	private String nombre;
 	private String direccion;
-	private String metodoDeFacturacion;
+	private Integer cuenta;
 
 	public Profesional(String nombre, String especialidad) {
 		this.nombre = nombre;
@@ -24,7 +24,11 @@ public class Profesional {
 		return direccion;
 	}
 
-	public String getMetodoDeFacturacion() {
-		return metodoDeFacturacion;
+	public Integer getCuenta() {
+		return cuenta;
+	}
+	
+	public void setCuenta(Integer cuenta) {
+		this.cuenta = cuenta;
 	}
 }

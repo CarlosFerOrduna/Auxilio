@@ -5,10 +5,10 @@ public class Vehiculo {
 	private String modelo;
 	private String marca;
 	private String patente;
-	
-	public Vehiculo(String modelo, String marca, String patente) {
-		this.modelo = modelo;
+
+	public Vehiculo(String marca, String modelo, String patente) {
 		this.marca = marca;
+		this.modelo = modelo;
 		this.patente = patente;
 	}
 
@@ -19,6 +19,7 @@ public class Vehiculo {
 	public String getMarca() {
 		return marca;
 	}
+
 	public String getPatente() {
 		return patente;
 	}

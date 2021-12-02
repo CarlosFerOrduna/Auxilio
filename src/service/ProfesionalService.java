@@ -18,8 +18,10 @@ public class ProfesionalService {
 		String nombre;
 		String especialidad;
 
-		nombre = JOptionPane.showInputDialog("Ingrese su nombre");
-		especialidad = JOptionPane.showInputDialog("Ingrese su especialidad");
+		nombre = JOptionPane.showInputDialog(null, "Ingrese su nombre", "Crear profesional",
+				JOptionPane.INFORMATION_MESSAGE);
+		especialidad = JOptionPane.showInputDialog(null, "Ingrese su especialidad", "Crear cliente",
+				JOptionPane.INFORMATION_MESSAGE);
 
 		profesionales.add(new Profesional(nombre, especialidad));
 
@@ -34,16 +36,6 @@ public class ProfesionalService {
 				"Se enviara el siguiente mensaje al cliente " + cliente.getNombre(), JOptionPane.INFORMATION_MESSAGE);
 
 		return reparacion.getDetalle() + " " + reparacion.getCosto();
-
-	}
-
-	public void reparar(Cliente cliente) {
-		
-		
-		
-	}
-
-	public void cobrar() {
 
 	}
 

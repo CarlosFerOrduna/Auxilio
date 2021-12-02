@@ -10,7 +10,7 @@ import domain.Reparacion;
 public class ReparacionService {
 	List<Reparacion> reparaciones = new ArrayList<Reparacion>();
 
-	public void agregarReparacion(Reparacion nuevaReparacion) {
+	public Reparacion crearReparacion() {
 
 		String detalle;
 		Double costo;
@@ -21,7 +21,9 @@ public class ReparacionService {
 		costo = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese el costo de la reparacion",
 				"Crear reparacion", JOptionPane.INFORMATION_MESSAGE));
 
-		reparaciones.add(nuevaReparacion);
+		reparaciones.add(new Reparacion(detalle, costo));
+		
+		return new Reparacion(detalle, costo);
 	}
 
 	public List<Reparacion> verLista() {
