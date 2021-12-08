@@ -56,7 +56,7 @@ public class ClienteService {
 
 	public String enviarVehiculoProfesional(Cliente cliente, Problema problema, Profesional profesional) {
 
-		if (problema.getTipo().equalsIgnoreCase("complejo")) {
+		if (problema.getTipo().equalsIgnoreCase("Complejo")) {
 
 			JOptionPane.showMessageDialog(null,
 					cliente.getNombre() + " " + cliente.getVehiculo().getMarca() + " "
@@ -99,7 +99,7 @@ public class ClienteService {
 		return "Usted le ha enviado el monto de " + montoPagar + " al profesional " + colaborador.getNombre();
 	}
 
-	public Integer darUbicacionDeCliente() {
+	public Integer darUbicacion() {
 
 		Integer ubicacion;
 

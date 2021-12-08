@@ -13,16 +13,16 @@ public class ReparacionService {
 	public Reparacion crearReparacion() {
 
 		String detalle;
-		Double costo;
+		Integer costo;
 
 		detalle = JOptionPane.showInputDialog(null, "Ingrese un detalle de la reparacion realizada", "Crear reparacion",
 				JOptionPane.INFORMATION_MESSAGE);
 
-		costo = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese el costo de la reparacion",
+		costo = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el costo de la reparacion",
 				"Crear reparacion", JOptionPane.INFORMATION_MESSAGE));
 
 		reparaciones.add(new Reparacion(detalle, costo));
-		
+
 		return new Reparacion(detalle, costo);
 	}
 

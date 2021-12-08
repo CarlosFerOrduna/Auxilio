@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.kerberos.KerberosCredMessage;
 import javax.swing.JOptionPane;
 
 import domain.Colaborador;
@@ -84,5 +85,35 @@ public class ColaboradorService {
 		montoACobrar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el monto a cobrar por la reparacion"));
 
 		return montoACobrar;
+	}
+
+	public Colaborador buscarColaboradorCercano(Integer ubicacionCercana) {
+
+		for (Colaborador colaborador : colaboradores) {
+
+			if (colaborador.getUbicacion() == ubicacionCercana) {
+
+				System.out.println("El colaborador es " + colaborador);
+
+				return colaborador;
+			} else {
+
+				for (Colaborador colaborador2 : colaboradores) {
+					if (colaborador.getDni() != colaborador2.getDni()) {
+						if (colaborador.getUbicacion() <= colaborador2.getUbicacion()) {
+
+							System.out.println("De la validacion el colaborador es " + colaborador.getNombre());
+
+							return colaborador;
+						} else {
+							System.out.println("Del else salio " + colaborador.getNombre());
+							return colaborador2;
+						}
+					}
+				}
+			}
+		}
+		return null;
+
 	}
 }
