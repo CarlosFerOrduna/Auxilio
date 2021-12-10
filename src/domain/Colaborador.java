@@ -4,10 +4,10 @@ public class Colaborador {
 
 	private String nombre;
 	private Integer dni;
-	private Integer ubicacion;
+	private Ubicacion ubicacion;
 	private Integer cuenta;
 
-	public Colaborador(String nombre, Integer dni, Integer ubicacion) {
+	public Colaborador(String nombre, Integer dni, Ubicacion ubicacion) {
 		this.nombre = nombre;
 		this.dni = dni;
 		this.ubicacion = ubicacion;
@@ -21,7 +21,7 @@ public class Colaborador {
 		return dni;
 	}
 
-	public Integer getUbicacion() {
+	public Ubicacion getUbicacion() {
 		return ubicacion;
 	}
 
@@ -33,7 +33,7 @@ public class Colaborador {
 		this.cuenta = cuenta;
 	}
 
-	public void setUbicacion(Integer ubicacion) {
+	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 
 	}

@@ -4,7 +4,7 @@ public class Cliente {
 
 	private Vehiculo vehiculo;
 	private String nombre;
-	private Integer ubicacion;
+	private Ubicacion ubicacion;
 	private Integer saldo;
 	private Integer dni;
 
@@ -21,7 +21,7 @@ public class Cliente {
 		return dni;
 	}
 
-	public Integer getUbicacion() {
+	public Ubicacion getUbicacion() {
 		return ubicacion;
 	}
 
@@ -37,7 +37,7 @@ public class Cliente {
 		this.saldo = saldo;
 	}
 
-	public void setUbicacion(Integer ubicacion) {
+	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 

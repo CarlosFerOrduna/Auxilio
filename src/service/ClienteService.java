@@ -9,6 +9,7 @@ import domain.Cliente;
 import domain.Colaborador;
 import domain.Problema;
 import domain.Profesional;
+import domain.Ubicacion;
 import domain.Vehiculo;
 
 public class ClienteService {
@@ -99,14 +100,18 @@ public class ClienteService {
 		return "Usted le ha enviado el monto de " + montoPagar + " al profesional " + colaborador.getNombre();
 	}
 
-	public Integer darUbicacion() {
+	public Ubicacion darUbicacion() {
 
-		Integer ubicacion;
+		double longitud;
+		double latitud;
 
-		ubicacion = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su ubicacion", "Ubicacion cliente",
+		longitud = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su longitud", "Ubicacion cliente",
 				JOptionPane.INFORMATION_MESSAGE));
 
-		return ubicacion;
+		latitud = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su latitud", "Ubicacion cliente",
+				JOptionPane.INFORMATION_MESSAGE));
+
+		return new Ubicacion(longitud, latitud);
 
 	}
 

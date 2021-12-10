@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import domain.Colaborador;
 import domain.Reparacion;
+import domain.Ubicacion;
 
 public class ColaboradorService {
 
@@ -17,18 +18,22 @@ public class ColaboradorService {
 
 		String nombre;
 		Integer dni;
-		Integer ubicacion;
+		double latitud;
+		double longitud;
 
 		nombre = JOptionPane.showInputDialog(null, "Ingrese su nombre", "Crear colaborador",
 				JOptionPane.INFORMATION_MESSAGE);
 		dni = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su dni", "Crear colaborador",
 				JOptionPane.INFORMATION_MESSAGE));
-		ubicacion = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su ubicacion con valor nomerico",
+		longitud = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su longitud con valor nomerico",
 				"Crear colaborador", JOptionPane.INFORMATION_MESSAGE));
 
-		colaboradores.add(new Colaborador(nombre, dni, ubicacion));
+		latitud = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su latitud con valor nomerico",
+				"Crear colaborador", JOptionPane.INFORMATION_MESSAGE));
 
-		return new Colaborador(nombre, dni, ubicacion);
+		colaboradores.add(new Colaborador(nombre, dni, new Ubicacion(longitud, latitud)));
+
+		return new Colaborador(nombre, dni, new Ubicacion(longitud, latitud));
 	}
 
 	public Colaborador buscarColaborador() {
@@ -87,30 +92,22 @@ public class ColaboradorService {
 		return montoACobrar;
 	}
 
-	public Colaborador buscarColaboradorCercano(Integer ubicacionCercana) {
+	public Colaborador buscarColaboradorCercano(Ubicacion ubicacionCercana) {
+
+		double distancia;
+		double guardarDistanciaMenor = 0;
 
 		for (Colaborador colaborador : colaboradores) {
 
-			if (colaborador.getUbicacion() == ubicacionCercana) {
+			distancia = Math
+					.sqrt(Math.pow((colaborador.getUbicacion().getLongitud() - ubicacionCercana.getLongitud()), 2)
+							+ Math.pow((colaborador.getUbicacion().getLatitud() - ubicacionCercana.getLatitud()), 2));
 
-				System.out.println("El colaborador es " + colaborador);
+			if (distancia <= guardarDistanciaMenor) {
+
+				guardarDistanciaMenor = distancia;
 
 				return colaborador;
-			} else {
-
-				for (Colaborador colaborador2 : colaboradores) {
-					if (colaborador.getDni() != colaborador2.getDni()) {
-						if (colaborador.getUbicacion() <= colaborador2.getUbicacion()) {
-
-							System.out.println("De la validacion el colaborador es " + colaborador.getNombre());
-
-							return colaborador;
-						} else {
-							System.out.println("Del else salio " + colaborador.getNombre());
-							return colaborador2;
-						}
-					}
-				}
 			}
 		}
 		return null;
