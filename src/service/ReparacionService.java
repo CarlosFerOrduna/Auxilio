@@ -6,12 +6,13 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import domain.Reparacion;
+import domain.Vehiculo;
 
 public class ReparacionService {
 
 	private List<Reparacion> reparaciones = new ArrayList<Reparacion>();
 
-	public Reparacion crearReparacion() {
+	public Reparacion crearReparacion(Vehiculo vehiculo) {
 
 		String detalle;
 		double costo;
@@ -22,9 +23,9 @@ public class ReparacionService {
 		costo = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese el costo de la reparacion",
 				"Crear reparacion", JOptionPane.INFORMATION_MESSAGE));
 
-		reparaciones.add(new Reparacion(detalle, costo));
+		reparaciones.add(new Reparacion(detalle, costo, vehiculo));
 
-		return new Reparacion(detalle, costo);
+		return new Reparacion(detalle, costo, vehiculo);
 	}
 
 	public List<Reparacion> verLista() {
