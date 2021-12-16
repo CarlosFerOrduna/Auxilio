@@ -6,12 +6,13 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import domain.Problema;
+import domain.Vehiculo;
 
 public class ProblemaService {
 
-	List<Problema> problemas = new ArrayList<Problema>();
+	private List<Problema> problemas = new ArrayList<Problema>();
 
-	public Problema crearProblema() {
+	public Problema crearProblema(Vehiculo vehiculo) {
 
 		String descripcion;
 		int decicion;
@@ -24,9 +25,11 @@ public class ProblemaService {
 		descripcion = JOptionPane.showInputDialog(null, "Ingrese una descripcion del problema", "Crear problema",
 				JOptionPane.INFORMATION_MESSAGE);
 
-		problemas.add(new Problema(opciones[decicion], descripcion));
+		problemas.add(new Problema(opciones[decicion], descripcion, vehiculo));
 
-		return new Problema(opciones[decicion], descripcion);
+		vehiculo.setProblemaAReportar(new Problema(opciones[decicion], descripcion, vehiculo));
+
+		return new Problema(opciones[decicion], descripcion, vehiculo);
 	}
 
 }

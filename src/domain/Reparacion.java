@@ -3,18 +3,24 @@ package domain;
 public class Reparacion {
 
 	private String detalle;
-	private Integer costo;
+	private double costo;
+	private Vehiculo vehiculo;
 
-	public Reparacion(String detalle, Integer costo) {
+	public Reparacion(String detalle, double costo, Vehiculo vehiculo) {
 		this.detalle = detalle;
 		this.costo = costo;
+		this.vehiculo = vehiculo;
 	}
 
 	public String getDetalle() {
 		return detalle;
 	}
 
-	public Integer getCosto() {
+	public double getCosto() {
 		return costo;
+	}
+
+	public Vehiculo getVehiculo() {
+		return vehiculo;
 	}
 }

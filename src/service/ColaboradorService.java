@@ -3,7 +3,6 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.kerberos.KerberosCredMessage;
 import javax.swing.JOptionPane;
 
 import domain.Colaborador;
@@ -12,7 +11,7 @@ import domain.Ubicacion;
 
 public class ColaboradorService {
 
-	List<Colaborador> colaboradores = new ArrayList<Colaborador>();
+	private List<Colaborador> colaboradores = new ArrayList<Colaborador>();
 
 	public Colaborador crearColaborador() {
 
@@ -66,7 +65,8 @@ public class ColaboradorService {
 
 			Integer dni;
 
-			dni = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dni del colaborador que busca"));
+			dni = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el dni del colaborador que busca",
+					"Buscar colaborador", JOptionPane.INFORMATION_MESSAGE));
 
 			for (Colaborador colaborador : colaboradores) {
 
@@ -83,34 +83,43 @@ public class ColaboradorService {
 		return null;
 	}
 
-	public Integer brindarAyuda(String mensajeDeAyuda, Reparacion reparacion) {
+	public double brindarAyuda(String mensajeDeAyuda, Reparacion reparacion) {
 
-		Integer montoACobrar;
+		double montoACobrar;
 
-		montoACobrar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el monto a cobrar por la reparacion"));
+		montoACobrar = Double
+				.parseDouble(JOptionPane.showInputDialog(null, "Ingrese el monto a cobrar por la reparacion",
+						"Monto a cobrar por la reparacion", JOptionPane.INFORMATION_MESSAGE));
 
 		return montoACobrar;
 	}
 
-	public Colaborador buscarColaboradorCercano(Ubicacion ubicacionCercana) {
+	public Colaborador buscarColaboradorCercano(Ubicacion ubicacionActualCliente) {
 
 		double distancia;
-		double guardarDistanciaMenor = 0;
+		double distanciaMenor = 0;
+		Colaborador colaboradorCercano = null;
 
-		for (Colaborador colaborador : colaboradores) {
+		for (int i = 0; i < colaboradores.size(); i++) {
 
-			distancia = Math
-					.sqrt(Math.pow((colaborador.getUbicacion().getLongitud() - ubicacionCercana.getLongitud()), 2)
-							+ Math.pow((colaborador.getUbicacion().getLatitud() - ubicacionCercana.getLatitud()), 2));
+			distancia = Math.sqrt(Math
+					.pow((colaboradores.get(i).getUbicacion().getLongitud() - ubicacionActualCliente.getLongitud()), 2)
+					+ Math.pow((colaboradores.get(i).getUbicacion().getLatitud() - ubicacionActualCliente.getLatitud()),
+							2));
 
-			if (distancia <= guardarDistanciaMenor) {
+			if (i == 0) {
 
-				guardarDistanciaMenor = distancia;
-
-				return colaborador;
+				distanciaMenor = distancia;
+				colaboradorCercano = colaboradores.get(0);
+			} else {
+				if (distancia < distanciaMenor) {
+					distanciaMenor = distancia;
+					colaboradorCercano = colaboradores.get(i);
+				}
 			}
 		}
-		return null;
+
+		return colaboradorCercano;
 
 	}
 }

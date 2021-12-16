@@ -4,12 +4,13 @@ public class Profesional {
 
 	private String especialidad;
 	private String nombre;
-	private String direccion;
-	private Integer cuenta;
+	private Ubicacion ubicacion;
+	private double cuenta;
 
-	public Profesional(String nombre, String especialidad) {
+	public Profesional(String nombre, String especialidad, Ubicacion ubicacion) {
 		this.nombre = nombre;
 		this.especialidad = especialidad;
+		this.ubicacion = ubicacion;
 	}
 
 	public String getNombre() {
@@ -20,15 +21,15 @@ public class Profesional {
 		return especialidad;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public Ubicacion getUbicacion() {
+		return ubicacion;
 	}
 
-	public Integer getCuenta() {
+	public double getCuenta() {
 		return cuenta;
 	}
-	
-	public void setCuenta(Integer cuenta) {
+
+	public void setCuenta(double cuenta) {
 		this.cuenta = cuenta;
 	}
 }

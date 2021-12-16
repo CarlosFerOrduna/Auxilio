@@ -14,7 +14,7 @@ import domain.Vehiculo;
 
 public class ClienteService {
 
-	List<Cliente> clientes = new ArrayList<Cliente>();
+	private List<Cliente> clientes = new ArrayList<Cliente>();
 
 	public void crearCliente() {
 
@@ -76,9 +76,9 @@ public class ClienteService {
 		return null;
 	}
 
-	public String pagarProfesional(Cliente cliente, Integer montoPagar, Profesional profesioanl) {
+	public String pagarProfesional(Cliente cliente, double montoPagar, Profesional profesioanl) {
 
-		cliente.setPago(cliente.getPago() - montoPagar);
+		cliente.setCuenta(cliente.getCuenta() - montoPagar);
 		profesioanl.setCuenta(montoPagar);
 
 		JOptionPane.showMessageDialog(null,
@@ -88,19 +88,19 @@ public class ClienteService {
 		return "Usted le ha enviado el monto de " + montoPagar + " al profesional " + profesioanl.getNombre();
 	}
 
-	public String pagarColaborador(Cliente cliente, Integer montoPagar, Colaborador colaborador) {
+	public String pagarColaborador(Cliente cliente, double montoPagar, Colaborador colaborador) {
 
-		cliente.setPago(cliente.getPago() - montoPagar);
+		cliente.setCuenta(cliente.getCuenta() - montoPagar);
 		colaborador.setCuenta(montoPagar);
 
 		JOptionPane.showMessageDialog(null,
-				"Usted le ha enviado el monto de " + montoPagar + " al profesional " + colaborador.getNombre(),
-				"Pagar profesional", JOptionPane.INFORMATION_MESSAGE);
+				"Usted le ha enviado el monto de " + montoPagar + " al colaborador " + colaborador.getNombre(),
+				"Pagar colaborador", JOptionPane.INFORMATION_MESSAGE);
 
 		return "Usted le ha enviado el monto de " + montoPagar + " al profesional " + colaborador.getNombre();
 	}
 
-	public Ubicacion darUbicacion() {
+	public Ubicacion darUbicacion(Cliente cliente) {
 
 		double longitud;
 		double latitud;
@@ -110,6 +110,8 @@ public class ClienteService {
 
 		latitud = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su latitud", "Ubicacion cliente",
 				JOptionPane.INFORMATION_MESSAGE));
+
+		cliente.setUbicacion(new Ubicacion(longitud, latitud));
 
 		return new Ubicacion(longitud, latitud);
 

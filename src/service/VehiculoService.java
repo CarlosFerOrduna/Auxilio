@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import domain.Problema;
+import domain.Reparacion;
 import domain.Vehiculo;
 
 public class VehiculoService {
 
-	List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
+	private List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
 
 	public Vehiculo crearVehiculo() {
 
@@ -72,12 +74,16 @@ public class VehiculoService {
 		String patente = JOptionPane.showInputDialog("Ingrese la patente");
 
 		vehiculos.add(new Vehiculo(marcas[elejirMarca], modelo, patente));
-		
+
 		return new Vehiculo(marcas[elejirMarca], modelo, patente);
 	}
 
-	public void historialDeReparaciones(Vehiculo vehiculo) {
+	public List<Reparacion> verReparacionesRealizadas(Vehiculo vehiculo) {
+		return vehiculo.getReparacionesRealizadas();
+	}
 
+	public List<Problema> verProblemasReportados(Vehiculo vehiculo) {
+		return vehiculo.getProblemasReportados();
 	}
 
 	public Vehiculo buscarVehiculoPorPatente() {

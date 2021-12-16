@@ -5,7 +5,7 @@ public class Colaborador {
 	private String nombre;
 	private Integer dni;
 	private Ubicacion ubicacion;
-	private Integer cuenta;
+	private double cuenta;
 
 	public Colaborador(String nombre, Integer dni, Ubicacion ubicacion) {
 		this.nombre = nombre;
@@ -25,11 +25,11 @@ public class Colaborador {
 		return ubicacion;
 	}
 
-	public Integer getCuenta() {
+	public double getCuenta() {
 		return cuenta;
 	}
 
-	public void setCuenta(Integer cuenta) {
+	public void setCuenta(double cuenta) {
 		this.cuenta = cuenta;
 	}
 

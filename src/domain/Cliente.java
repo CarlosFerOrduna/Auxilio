@@ -5,7 +5,7 @@ public class Cliente {
 	private Vehiculo vehiculo;
 	private String nombre;
 	private Ubicacion ubicacion;
-	private Integer saldo;
+	private double cuenta;
 	private Integer dni;
 
 	public Cliente(String nombre, Integer dni) {
@@ -29,12 +29,12 @@ public class Cliente {
 		return vehiculo;
 	}
 
-	public Integer getPago() {
-		return saldo;
+	public double getCuenta() {
+		return cuenta;
 	}
 
-	public void setPago(Integer saldo) {
-		this.saldo = saldo;
+	public void setCuenta(double cuenta) {
+		this.cuenta = cuenta;
 	}
 
 	public void setUbicacion(Ubicacion ubicacion) {

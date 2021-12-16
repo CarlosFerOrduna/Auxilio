@@ -19,11 +19,12 @@ public class Principal {
 		colaborador.crearColaborador();
 		cliente.crearCliente();
 		cliente.pedirAyuda(cliente.asociarVehiculo(cliente.buscarCliente(), vehiculo.crearVehiculo()),
-				problema.crearProblema(), colaborador.buscarColaboradorCercano(cliente.darUbicacion()));
+				problema.crearProblema(vehiculo.buscarVehiculoPorPatente()),
+				colaborador.buscarColaboradorCercano(cliente.darUbicacion(cliente.buscarCliente())));
 
-//		profesional.crearProfesional();
-
-//		cliente.enviarVehiculoProfesional(cliente.asociarVehiculo(cliente.buscarCliente(), vehiculo.crearVehiculo()),
-//				problema.crearProblema(), profesional.buscarProfesional());
+		profesional.crearProfesional();
+		cliente.crearCliente();
+		cliente.enviarVehiculoProfesional(cliente.asociarVehiculo(cliente.buscarCliente(), vehiculo.crearVehiculo()),
+				problema.crearProblema(vehiculo.buscarVehiculoPorPatente()), profesional.buscarProfesional());
 	}
 }
